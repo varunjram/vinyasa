@@ -4,7 +4,7 @@ import {FaOpencart} from "react-icons/fa";
 
 export default function Navigation() {
   return (
-    <div className="nav-container">
+    <div className="nav-container z-5 bg-white">
       <div className="nav-left">
         <a href="/">
           <h2 className="text-3xl">Vinyasa</h2>
