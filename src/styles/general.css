@@ -1,0 +1,11 @@
+.btn {
+  border: none;
+}
+
+.input {
+  padding-left: 0.2rem;
+}
+
+.input:focus-visible {
+  outline: none;
+}
