@@ -1,6 +1,7 @@
 import React from "react";
 import {Carousel} from "primereact/carousel";
 import {Button} from "primereact/button";
+import Categories from "../components/Categories";
 
 export default function Home() {
   const responsiveOptions = [
@@ -48,7 +49,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="mt-5">
+      <div className="mt-5rem">
         <Carousel
           value={heroComponentData}
           numVisible={1}
@@ -57,6 +58,7 @@ export default function Home() {
           itemTemplate={productTemplate}
           circular
         />
+        <Categories />
       </div>
     </div>
   );

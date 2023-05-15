@@ -1,0 +1,27 @@
+.category {
+  position: relative;
+  border: 2px solid $border-color;
+  border-left: 40px solid $border-color;
+  padding: 15px;
+  color: rgba(black, 0.5);
+  font-size: small;
+  display: inline-block;
+}
+
+.category-title {
+  font-size: 1.3rem;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  width: 3rem;
+  font-weight: 700;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  height: 100%;
+  text-align: center;
+  font-stretch: expanded;
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+}

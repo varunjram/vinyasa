@@ -1,5 +1,5 @@
 import React from "react";
-import {BsBookmarkHeart, BsFilePerson, BsSearch} from "react-icons/bs";
+import {BsBookmarkHeart, BsEggFried, BsFilePerson, BsSearch} from "react-icons/bs";
 import {FaOpencart} from "react-icons/fa";
 
 export default function Navigation() {
@@ -23,6 +23,9 @@ export default function Navigation() {
         </a>
         <a href="/wishlist">
           <BsFilePerson />
+        </a>
+        <a href="/mock-api">
+          <BsEggFried />
         </a>
         <button className="login-btn btn">Login</button>
       </div>
