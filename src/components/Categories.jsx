@@ -1,6 +1,8 @@
+import {fetchCategories} from "../utils/apiCalls";
+
 export default function Categories() {
   return (
-    <div className="grid">
+    <div className="grid mr-6 ml-6 mb-4">
       <div
         className="col-4 surface-500 mt-5  h-12rem bg-cover category"
         style={{
@@ -8,6 +10,7 @@ export default function Categories() {
         }}>
         <p className="bg-white text-green-900 category-title">MENS</p>
       </div>
+
       <div
         className="col-4 surface-500 mt-5  h-12rem bg-cover category"
         style={{
@@ -15,6 +18,7 @@ export default function Categories() {
         }}>
         <p className="bg-white text-green-900 category-title">WOMANS</p>
       </div>
+
       <div
         className="col-4 surface-500 mt-5  h-12rem bg-cover category"
         style={{

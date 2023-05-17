@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useContext} from "react";
 import {Carousel} from "primereact/carousel";
 import {Button} from "primereact/button";
 import Categories from "../components/Categories";
+import {StoreContext} from "../context/StoreContext";
 
 export default function Home() {
+  const {state} = useContext(StoreContext);
   const responsiveOptions = [
     {
       breakpoint: "1199px",
@@ -41,15 +43,18 @@ export default function Home() {
   ];
   const productTemplate = ({src}, i) => {
     return (
-      <div className="h-30rem">
-        <img src={src} alt={`hero${i + 1}`} className="w-full" />
+      <div className="hero-container">
+        <img src={src} alt={`hero${i + 1}`} className="hero-container-img" />
       </div>
     );
   };
 
   return (
     <div>
-      <div className="mt-5rem">
+      {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
+
+      <Categories />
+      <div className="w-full">
         <Carousel
           value={heroComponentData}
           numVisible={1}
@@ -58,8 +63,47 @@ export default function Home() {
           itemTemplate={productTemplate}
           circular
         />
-        <Categories />
       </div>
+      <section className="grid collection w-full">
+        <article className="lg:col-6 sm:col:12 ">
+          <div className="collection-card m-5 " style={{backgroundColor: "lightcoral"}}>
+            <div className="collection-card__image">
+              <img
+                src="/assets/images/categories/summer.jpg"
+                alt="summer banner"
+                srcset=""
+                className="w-full"
+              />
+            </div>
+            <div className="collection-card__data">
+              <p>New Arrivals</p>
+              <div>
+                <h3>Summer Collection</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam!</p>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article className="lg:col-6 sm:col:12">
+          <div className="collection-card m-5  " style={{backgroundColor: "lightskyblue"}}>
+            <div className="collection-card__image">
+              <img
+                src="/assets/images/categories/winter.jpg"
+                alt="summer banner"
+                srcset=""
+                className="w-full"
+              />
+            </div>
+            <div className="collection-card__data">
+              <p>New Arrivals</p>
+              <div>
+                <h3>Winter Collection</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam!</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
     </div>
   );
 }

@@ -6,6 +6,7 @@
   color: rgba(black, 0.5);
   font-size: small;
   display: inline-block;
+  border: 1px solid black;
 }
 
 .category-title {

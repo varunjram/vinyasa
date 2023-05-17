@@ -1,0 +1,30 @@
+.hero-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-container-img {
+  flex-shrink: 0;
+  object-fit: cover;
+}
+/* .collection {
+ 
+} */
+
+.collection-card {
+  display: flex;
+}
+
+.collection-card__image {
+  width: 40%;
+  padding: 2rem;
+}
+
+.collection-card__data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+}
