@@ -1,7 +1,7 @@
 const StoreReducer = (state, {type, payload}) => {
   switch (type) {
-    case "type 1":
-      return "something 1";
+    case "Update_Products":
+      return {...state, products: payload};
     case "Update_Test":
       return {...state, test: state.test + 1};
     default:
@@ -9,5 +9,6 @@ const StoreReducer = (state, {type, payload}) => {
   }
 };
 const Update_Test = "Update_Test";
-export {Update_Test};
+const Update_Products = "Update_Products";
+export {Update_Test, Update_Products};
 export default StoreReducer;

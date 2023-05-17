@@ -1,5 +1,5 @@
 import {createContext, useEffect, useReducer} from "react";
-import StoreReducer from "../reducers/storeReducer";
+import StoreReducer, {Update_Products} from "../reducers/storeReducer";
 import {fetchProducts} from "../utils/apiCalls";
 
 export const StoreContext = createContext();
@@ -14,7 +14,9 @@ const StoreContextProvider = ({children}) => {
   const [state, dispatch] = useReducer(StoreReducer, store);
 
   useEffect(() => {
-    fetchProducts();
+    (async () => {
+      dispatch({type: Update_Products, payload: await fetchProducts()});
+    })();
   }, []);
   return <StoreContext.Provider value={{state, dispatch}}>{children}</StoreContext.Provider>;
 };
