@@ -54,5 +54,6 @@
 
 @import "./styles/components/navigation.css";
 @import "./styles/components/categories.css";
+@import "./styles/components/productCard.css";
 @import "./styles/pages/home.css";
 @import "./styles/general.css";

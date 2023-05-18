@@ -1,0 +1,16 @@
+.product-card {
+  width: 15rem;
+  border: 1px solid black;
+}
+.product-card__img-containder {
+  width: 100%;
+}
+.product-card__img-containder img {
+  width: 100%;
+}
+.product-card__data {
+}
+
+.product-card__data button {
+  /* all: unset; */
+}

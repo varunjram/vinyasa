@@ -12,6 +12,7 @@ export const products = [
     brand: "Shiv Khera",
     price: "5000",
     categoryName: "Men's Clothing",
+    rating: 1,
   },
   {
     _id: uuid(),
@@ -19,6 +20,7 @@ export const products = [
     brand: "Fashionista",
     price: "3500",
     categoryName: "Women's Clothing",
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -26,6 +28,7 @@ export const products = [
     brand: "Little Explorers",
     price: "250",
     categoryName: "Kids' Clothing",
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -33,6 +36,7 @@ export const products = [
     brand: "FootFlex",
     price: "1200",
     categoryName: "Shoes",
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -40,6 +44,7 @@ export const products = [
     brand: "ShadeMaster",
     price: "500",
     categoryName: "Accessories",
+    rating: 5,
   },
   {
     _id: uuid(),
@@ -47,6 +52,7 @@ export const products = [
     brand: "Fashion Finesse",
     price: "1500",
     categoryName: "Men's Clothing",
+    rating: 1,
   },
   {
     _id: uuid(),
@@ -54,6 +60,7 @@ export const products = [
     brand: "Elegance Couture",
     price: "8000",
     categoryName: "Men's Clothing",
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -61,6 +68,7 @@ export const products = [
     brand: "Trendy Chic",
     price: "1200",
     categoryName: "Women's Clothing",
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -68,6 +76,7 @@ export const products = [
     brand: "Classy Attire",
     price: "4500",
     categoryName: "Women's Clothing",
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -75,6 +84,7 @@ export const products = [
     brand: "Tiny Trends",
     price: "800",
     categoryName: "Kids' Clothing",
+    rating: 50,
   },
   {
     _id: uuid(),
@@ -82,6 +92,7 @@ export const products = [
     brand: "Denim Co.",
     price: "2500",
     categoryName: "Men's Clothing",
+    rating: 1,
   },
   {
     _id: uuid(),
@@ -89,6 +100,7 @@ export const products = [
     brand: "Blossom Fashion",
     price: "1800",
     categoryName: "Women's Clothing",
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -96,6 +108,7 @@ export const products = [
     brand: "Playful Kids",
     price: "600",
     categoryName: "Kids' Clothing",
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -103,6 +116,7 @@ export const products = [
     brand: "Classic Footwear",
     price: "3200",
     categoryName: "Shoes",
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -110,6 +124,7 @@ export const products = [
     brand: "Fashion Avenue",
     price: "900",
     categoryName: "Accessories",
+    rating: 5,
   },
   {
     _id: uuid(),
@@ -117,6 +132,7 @@ export const products = [
     brand: "Polo Style",
     price: "1200",
     categoryName: "Men's Clothing",
+    rating: 1,
   },
   {
     _id: uuid(),
@@ -124,6 +140,7 @@ export const products = [
     brand: "Slim Fit",
     price: "1500",
     categoryName: "Women's Clothing",
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -131,6 +148,7 @@ export const products = [
     brand: "Happy Prints",
     price: "400",
     categoryName: "Kids' Clothing",
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -138,6 +156,7 @@ export const products = [
     brand: "Elegant Steps",
     price: "2800",
     categoryName: "Shoes",
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -145,6 +164,7 @@ export const products = [
     brand: "Casual Comfort",
     price: "1800",
     categoryName: "Men's Clothing",
+    rating: 5,
   },
   {
     _id: uuid(),
@@ -152,6 +172,7 @@ export const products = [
     brand: "Sunshine Fashion",
     price: "2100",
     categoryName: "Women's Clothing",
+    rating: 1,
   },
   {
     _id: uuid(),
@@ -159,6 +180,7 @@ export const products = [
     brand: "Cool Kids",
     price: "500",
     categoryName: "Kids' Clothing",
+    rating: 2,
   },
   {
     _id: uuid(),
@@ -166,6 +188,7 @@ export const products = [
     brand: "Elegant Attire",
     price: "1900",
     categoryName: "Men's Clothing",
+    rating: 3,
   },
   {
     _id: uuid(),
@@ -173,6 +196,7 @@ export const products = [
     brand: "Cozy Knits",
     price: "1600",
     categoryName: "Women's Clothing",
+    rating: 4,
   },
   {
     _id: uuid(),
@@ -180,6 +204,7 @@ export const products = [
     brand: "Active Kids",
     price: "800",
     categoryName: "Kids' Clothing",
+    rating: 5,
   },
   {
     _id: uuid(),
@@ -187,6 +212,7 @@ export const products = [
     brand: "Athletic Gear",
     price: "3500",
     categoryName: "Shoes",
+    rating: 5,
   },
   {
     _id: uuid(),
@@ -194,5 +220,6 @@ export const products = [
     brand: "Fashionista",
     price: "600",
     categoryName: "Accessories",
+    rating: 5,
   },
 ];
