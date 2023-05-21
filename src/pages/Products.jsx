@@ -14,8 +14,10 @@ import ProductFilterReducer, {
 } from "../reducers/productFilterReducer";
 import filterBY from "../utils/productFilterFunction";
 import ProductCard from "../components/ProductCard";
+import {UserContext} from "../context/UserContext";
 
 export default function Products() {
+  const {set} = useContext(UserContext);
   const {categories, products} = useContext(StoreContext);
   const {
     filter: {price, category, ratings, sortBy},
@@ -75,9 +77,11 @@ export default function Products() {
   ];
 
   const filteredProducts = filterBY({products, price, category, sortBy, ratings});
+  console.log("filteredProducts: ", filteredProducts);
+
   return (
-    <main className="grid">
-      <section className="col:2 surface-200 p-5">
+    <main className="product-layout">
+      <section className="product-layout--filter">
         <div className="flex justify-content-center">
           <Button text>Filters</Button>
           <Button text>Clear </Button>
@@ -122,12 +126,13 @@ export default function Products() {
           onChange={(e) => dispatchFilter({type: Update_Sort_By, payload: e.value})}
         />
       </section>
-
-      <section className="">
-        {/* <pre>{JSON.stringify(filteredProducts, null, 2)}</pre> */}
-        <div className="flex flex-wrap">
+      <section className="product-layout--display">
+        <p>
+          Showing All Products <small>{`( Showing ${filteredProducts.length} Products )`}</small>
+        </p>
+        <div className="product-layout--products">
           {filteredProducts.map((product) => (
-            <ProductCard Product={product} />
+            <ProductCard product={product} />
           ))}
         </div>
       </section>

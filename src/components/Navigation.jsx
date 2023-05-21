@@ -1,34 +1,55 @@
-import React from "react";
+import React, {useContext} from "react";
 import {BsBookmarkHeart, BsEggFried, BsFilePerson, BsSearch} from "react-icons/bs";
 import {FaOpencart} from "react-icons/fa";
 
+import {Link, useNavigate} from "react-router-dom";
+import {UserContext} from "../context/UserContext";
+import {Button} from "primereact/button";
+import {Logout} from "../reducers/userReducer";
+
 export default function Navigation() {
+  const Navigate = useNavigate();
+  const {
+    userState: {isLoggedIn},
+    userDispatch,
+  } = useContext(UserContext);
   return (
     <div className="nav-container z-5 bg-white">
       <div className="nav-left">
-        <a href="/">
-          <h2 className="text-3xl">Vinyasa</h2>
-        </a>
+        <Link className="text-3xl" to="/">
+          Vinyasa
+        </Link>
       </div>
       <div className="nav-center">
         <BsSearch className="inline" />
         <input className="input" type="search" name="" id="search" placeholder="Search" />
       </div>
-      <div className="nav-right">
-        <a href="/wishlist">
+      <nav className="nav-right">
+        <Link to="/wishlist">
           <BsBookmarkHeart />
-        </a>
-        <a href="/cart">
+        </Link>
+        <Link to="/cart">
           <FaOpencart />
-        </a>
-        <a href="/wishlist">
+        </Link>
+        <Link to="/wishlist">
           <BsFilePerson />
-        </a>
-        <a href="/mock-api">
+        </Link>
+        <Link to="/mock-api">
           <BsEggFried />
-        </a>
-        <button className="login-btn btn">Login</button>
-      </div>
+        </Link>
+        <Link to="/login"></Link>
+
+        <Button
+          onClick={() => {
+            if (isLoggedIn) {
+              userDispatch({type: Logout});
+            } else {
+              Navigate("/login");
+            }
+          }}>
+          {isLoggedIn ? "Logout" : "Login"}
+        </Button>
+      </nav>
     </div>
   );
 }

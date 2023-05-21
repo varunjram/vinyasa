@@ -6,6 +6,7 @@ import {makeServer} from "./server";
 
 import {BrowserRouter} from "react-router-dom";
 import StoreContextProvider from "./context/StoreContext";
+import UserContextProvider from "./context/UserContext";
 
 // Call make Server
 makeServer();
@@ -13,9 +14,11 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <StoreContextProvider>
-        <App />
-      </StoreContextProvider>
+      <UserContextProvider>
+        <StoreContextProvider>
+          <App />
+        </StoreContextProvider>
+      </UserContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

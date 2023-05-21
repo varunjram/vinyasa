@@ -20,7 +20,9 @@ const initialProductFilters = {
 
 const StoreContextProvider = ({children}) => {
   const [state, dispatch] = useReducer(StoreReducer, store);
+  console.log("state: ", state);
   const [filter, dispatchFilter] = useReducer(ProductFilterReducer, initialProductFilters);
+  console.log("filter: ", filter);
 
   useEffect(() => {
     (async () => {
