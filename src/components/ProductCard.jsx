@@ -1,12 +1,42 @@
 import React from "react";
 import {BsHeartFill, BsHeart} from "react-icons/bs";
+import {Tooltip} from "primereact/tooltip";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import {Button} from "primereact/button";
 
 function ProductCard({product}) {
-  const {name, brand, description, price, categoryName, image_url, rating, strikePrice, off} =
+  const Navigate = useNavigate();
+
+  const {_id, name, brand, description, price, categoryName, image_url, rating, strikePrice, off} =
     product || {};
 
+  const token = localStorage.getItem("userToken");
+  console.log("token product: ", token);
+
+  const addProductsToCart = async () => {
+    try {
+      const response = await axios.post(
+        "/api/user/cart",
+        {product},
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+      alert(response.status);
+    } catch (error) {
+      console.log("error: ", error);
+      alert(error);
+    }
+  };
+
   return (
-    <article className="product-card">
+    <article
+      className="product-card"
+      // onClick={() => Navigate(`/product/${_id}`)}
+    >
       <div className="product-card__img-container">
         <img src={image_url} alt="" srcset="" />
         <p className="rating">{rating} 🌟</p>
@@ -15,7 +45,10 @@ function ProductCard({product}) {
 
       <div className="product-card__data">
         <div className="product-card__data__top">
-          <h3>{name}</h3>
+          <Tooltip target=".custom-target-icon" />
+          <h3 data-pr-tooltip="No notifications" className=".custom-target-icon">
+            {name}
+          </h3>
         </div>
         <div className="product-card__data__middle">
           <div className="price-details">
@@ -26,10 +59,14 @@ function ProductCard({product}) {
           </div>
           <p className="off">{off}% off</p>
         </div>
-        <div className="product-card__data__bottom"></div>
-        <button aria-label="Add to Cart" class="p-button p-component">
-          <span class="p-button-label p-c">Add to Cart</span>
-        </button>
+        <Button
+          onClick={(e) => {
+            e.stopPropagation();
+            addProductsToCart();
+          }}
+          className="mt-2 block">
+          Add to Cart
+        </Button>
       </div>
     </article>
   );

@@ -10,6 +10,8 @@ import NotFound from "../pages/NotFound";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import AuthWrapper from "./AuthWrapper";
+import Profile from "../pages/Profile";
+import Product from "../pages/Product";
 
 export default function Routing() {
   return (
@@ -17,9 +19,10 @@ export default function Routing() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<AuthWrapper children={<Cart />} />} />
-        <Route path="/wishlist" element={<WishList />} />
+        <Route path="/wishlist" element={<AuthWrapper children={<WishList />} />} />
+        <Route path="/profile" element={<AuthWrapper children={<Profile />} />} />
         <Route path="/products" element={<Products />} />
-        <Route path="/products/:id" element={<Products />} />
+        <Route path="/product/:id" element={<Product />} />
         <Route path="/mock-api" element={<MockAPI />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

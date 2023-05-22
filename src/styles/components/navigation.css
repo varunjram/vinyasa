@@ -1,16 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
 .nav-container {
   position: sticky;
   top: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0px 15px 10px -15px #111;
-  height: 3rem;
+  height: 4rem;
+}
+
+.brand {
+  all: unset;
+  font-family: "Permanent Marker", cursive;
 }
 
 .nav-right {
   display: flex;
-  min-width: 12rem;
+  min-width: 20rem;
   justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
@@ -21,4 +28,25 @@
   padding: 0.2rem 1rem;
   color: white;
   font-size: 1rem;
+}
+
+.nav-center {
+  border: 1px solid grey;
+  border-radius: 0.2rem;
+  padding: 0.5rem 0.3rem;
+  flex-grow: 1;
+  margin: 0rem 3rem;
+}
+
+.nav-center input {
+  all: unset;
+}
+
+@media screen and (width < 400px) {
+  .nav-center {
+    margin: 0rem 2rem;
+  }
+  .nav-center input {
+    width: 5rem;
+  }
 }

@@ -3,9 +3,11 @@ import {Carousel} from "primereact/carousel";
 import {Button} from "primereact/button";
 import Categories from "../components/Categories";
 import {StoreContext} from "../context/StoreContext";
+import {useNavigate} from "react-router-dom";
 
 export default function Home() {
   const {state} = useContext(StoreContext);
+  const Navigate = useNavigate();
   const responsiveOptions = [
     {
       breakpoint: "1199px",
@@ -43,18 +45,16 @@ export default function Home() {
   ];
   const productTemplate = ({src}, i) => {
     return (
-      <div className="hero-container">
-        <img src={src} alt={`hero${i + 1}`} className="hero-container-img" />
+      <div className="hero-container cursor-pointer grid" onClick={() => Navigate("/products")}>
+        <img src={src} alt={`hero${i + 1}`} className="hero-container-img col-12" />
       </div>
     );
   };
 
   return (
-    <div>
-      {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
-
+    <div className="grid">
       <Categories />
-      <div className="w-full">
+      <div className="col-12">
         <Carousel
           value={heroComponentData}
           numVisible={1}
@@ -62,10 +62,11 @@ export default function Home() {
           responsiveOptions={responsiveOptions}
           itemTemplate={productTemplate}
           circular
+          // onClick={() => Navigate("/products")}
         />
       </div>
       <section className="grid collection w-full">
-        <article className="lg:col-6 sm:col:12 ">
+        <article className="lg:col-6 md:col-6 sm:col-12  ">
           <div className="collection-card m-5 " style={{backgroundColor: "lightcoral"}}>
             <div className="collection-card__image">
               <img
@@ -77,6 +78,9 @@ export default function Home() {
             </div>
             <div className="collection-card__data">
               <p>New Arrivals</p>
+              <Button className="text-2xl text-900" text onClick={() => Navigate("/products")}>
+                Explore
+              </Button>
               <div>
                 <h3>Summer Collection</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam!</p>
@@ -84,7 +88,7 @@ export default function Home() {
             </div>
           </div>
         </article>
-        <article className="lg:col-6 sm:col:12">
+        <article className="lg:col-6 md:col-6 sm:col-12 ">
           <div className="collection-card m-5  " style={{backgroundColor: "lightskyblue"}}>
             <div className="collection-card__image">
               <img
@@ -96,6 +100,9 @@ export default function Home() {
             </div>
             <div className="collection-card__data">
               <p>New Arrivals</p>
+              <Button className="text-2xl text-900" text onClick={() => Navigate("/products")}>
+                Explore
+              </Button>
               <div>
                 <h3>Winter Collection</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam!</p>

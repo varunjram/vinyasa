@@ -10,27 +10,33 @@ export const categories = [
     _id: uuid(),
     categoryName: "Men's Clothing",
     description: "Explore a wide range of clothing options for men.",
+    displayName: "Mens",
+    backgroundImage: "/assets/images/categories/mens.jpg",
   },
   {
     _id: uuid(),
     categoryName: "Women's Clothing",
     description: "Discover the latest trends and styles for women.",
+    displayName: "Womans",
+    backgroundImage: "/assets/images/categories/womans.jpg",
   },
   {
     _id: uuid(),
-    categoryName: "Kids' Clothing",
+    categoryName: "Kids Clothing",
     description: "Find comfortable and fashionable clothing for kids.",
+    displayName: "Kids",
+    backgroundImage: "/assets/images/categories/kids.jpg",
   },
-  {
-    _id: uuid(),
-    categoryName: "Shoes",
-    description: "Discover a collection of stylish and comfortable shoes.",
-  },
-  {
-    _id: uuid(),
-    categoryName: "Accessories",
-    description: "Enhance your outfits with trendy accessories.",
-  },
+  // {
+  //   _id: uuid(),
+  //   categoryName: "Shoes",
+  //   description: "Discover a collection of stylish and comfortable shoes.",
+  // },
+  // {
+  //   _id: uuid(),
+  //   categoryName: "Accessories",
+  //   description: "Enhance your outfits with trendy accessories.",
+  // },
 ];
 
 // export const categories = [

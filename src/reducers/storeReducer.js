@@ -3,7 +3,7 @@ const StoreReducer = (state, {type, payload}) => {
     case "Update_Products":
       return {...state, products: payload};
     case "Update_Categories":
-      return {...state, categories: payload};
+      return {...state, categories: [...payload]};
     case "Update_Test":
       return {...state, test: state.test + 1};
     default:

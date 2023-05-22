@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 
 import {Button} from "primereact/button";
 import {Checkbox} from "primereact/checkbox";
@@ -6,7 +6,8 @@ import {Checkbox} from "primereact/checkbox";
 import PriceRange from "../components/PriceRange";
 import {StoreContext} from "../context/StoreContext";
 import RadioFilter from "../components/RadioFilter";
-import ProductFilterReducer, {
+import {
+  Reset_Filters,
   Update_Category,
   Update_Price,
   Update_Ratings,
@@ -14,17 +15,16 @@ import ProductFilterReducer, {
 } from "../reducers/productFilterReducer";
 import filterBY from "../utils/productFilterFunction";
 import ProductCard from "../components/ProductCard";
-import {UserContext} from "../context/UserContext";
 
 export default function Products() {
-  const {set} = useContext(UserContext);
-  const {categories, products} = useContext(StoreContext);
   const {
+    categories,
+    products,
     filter: {price, category, ratings, sortBy},
     dispatchFilter,
   } = useContext(StoreContext);
-  console.log("category: ", category);
-  console.log("Filter: ", sortBy);
+
+  console.log("category-filter: ", category);
 
   const onCategoryChange = (e) => {
     console.log("e: ", e);
@@ -83,8 +83,10 @@ export default function Products() {
     <main className="product-layout">
       <section className="product-layout--filter">
         <div className="flex justify-content-center">
-          <Button text>Filters</Button>
-          <Button text>Clear </Button>
+          <p>Filters</p>
+          <Button text onClick={() => dispatchFilter({type: Reset_Filters})}>
+            Clear{" "}
+          </Button>
         </div>
         <PriceRange
           value={price}

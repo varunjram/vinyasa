@@ -5,6 +5,7 @@
 .product-layout--filter {
   background-color: gainsboro;
   padding: 0.2rem 2rem;
+  flex-basis: 20%;
 }
 .product-layout--display {
   /* flex-grow: 1; */

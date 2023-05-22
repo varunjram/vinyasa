@@ -3,6 +3,9 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background-image: url("https://img.freepik.com/premium-photo/marble-ink-abstract-art-from-exquisite-original-painting-abstract-background_31965-60021.jpg?w=996");
+  background-position: center;
+  background-blend-mode: lighten;
 }
 
 .hero-container-img {
@@ -27,4 +30,15 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 2rem;
+}
+
+@media screen and (width < 770px) {
+  .collection-card {
+    display: block;
+  }
+
+  .collection-card__image {
+    width: 100%;
+    padding: 0.5rem;
+  }
 }

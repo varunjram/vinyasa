@@ -31,7 +31,14 @@
   flex-direction: column;
   justify-content: space-between;
 }
-
+.product-card__data__bottom {
+  margin-top: 1rem;
+}
+.product-card__data__top h3 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .product-card__data__middle {
   display: flex;
   justify-content: space-between;
