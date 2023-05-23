@@ -5,7 +5,8 @@
 .product-layout--filter {
   background-color: gainsboro;
   padding: 0.2rem 2rem;
-  flex-basis: 20%;
+  flex-basis: 250px;
+  flex-shrink: 0;
 }
 .product-layout--display {
   /* flex-grow: 1; */
@@ -16,4 +17,10 @@
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;
+}
+
+@media screen and (width < 420px) {
+  .product-layout--filter {
+    display: none;
+  }
 }

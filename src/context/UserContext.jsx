@@ -1,10 +1,9 @@
-import {createContext, useReducer, useState} from "react";
-import userReducer from "../reducers/userReducer";
+import {createContext, useEffect, useReducer, useState} from "react";
+import userReducer, {Add_user} from "../reducers/userReducer";
 
 export const UserContext = createContext();
 const initialUserState = {
   user: {
-    test: "",
     isLoggedIn: false,
   },
 };
@@ -15,6 +14,12 @@ const UserContextProvider = ({children}) => {
     userState,
     userDispatch,
   };
+
+  useEffect(() => {
+    const _user = localStorage.getItem("foundUser");
+    // console.log(" _user: ", JSON.parse(_user));
+    userDispatch({type: Add_user, payload: {user: JSON.parse(_user)}});
+  });
 
   return (
     <>

@@ -16,9 +16,6 @@ const Login = () => {
   console.log("userState: ", userState);
 
   const [form, setForm] = useState({email: "", password: ""});
-
-  const cred = {email: "adarshbalika@gmail.com", password: "adarshbalika"};
-
   const submitHandler = async (e) => {
     e.preventDefault();
     console.log("form: ", form);
@@ -29,6 +26,7 @@ const Login = () => {
 
       if (status === 200) {
         localStorage.setItem("userToken", JSON.stringify(data?.encodedToken));
+        localStorage.setItem("foundUser", JSON.stringify(data?.foundUser));
         userDispatch({type: Add_user, payload: {user: data.foundUser, isLoggedIn: true}});
         navigate(location?.state?.from);
         console.log("location?.state?.from: ", location?.state?.from);

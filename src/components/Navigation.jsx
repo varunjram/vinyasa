@@ -27,7 +27,7 @@ export default function Navigation() {
       <Tooltip target=".cart" />
       <Tooltip target=".profile" />
       <div className="nav-left pl-5">
-        <Link className="text-5xl brand" to="/">
+        <Link className="text-5xl brand cursor-pointer" to="/">
           Vinyasa
         </Link>
       </div>
