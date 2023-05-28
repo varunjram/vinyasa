@@ -8,6 +8,8 @@ import {Button} from "primereact/button";
 import {Logout} from "../reducers/userReducer";
 import {Tooltip} from "primereact/tooltip";
 import {Menu} from "primereact/menu";
+import { Badge } from 'primereact/badge';
+
 
 export default function Navigation() {
   let mobileMenueItems = [
@@ -18,9 +20,10 @@ export default function Navigation() {
 
   const Navigate = useNavigate();
   const {
-    userState: {isLoggedIn},
+    userState: {isLoggedIn,cart,wishlist},
     userDispatch,
   } = useContext(UserContext);
+  console.log('cart: ', cart?.length);
   return (
     <div className="nav-container z-5 bg-white">
       <Tooltip target=".wishlist" />
@@ -38,13 +41,16 @@ export default function Navigation() {
       <nav className="nav-right pr-5 hidden md:flex lg:flex">
         <Link
           to="/wishlist"
-          className="wishlist"
+          className="p-overlay-badge"
           data-pr-tooltip="Wishlist"
-          data-pr-position="bottom">
+          data-pr-position="bottom"
+          >
           <BsBookmarkHeart />
+          {wishlist?.length ?<Badge value={wishlist?.length}></Badge> : null}
         </Link>
-        <Link to="/cart" className="cart" data-pr-tooltip="Cart" data-pr-position="bottom">
+        <Link to="/cart" className="p-overlay-badge" data-pr-tooltip="Cart" data-pr-position="bottom">
           <FaOpencart />
+          { cart?.length ? <Badge value={cart?.length}></Badge> : null}
         </Link>
         {isLoggedIn && (
           <Link
@@ -55,10 +61,12 @@ export default function Navigation() {
             <BsFilePerson />
           </Link>
         )}
-        <Link to="/mock-api">
+        <Link to="/mock-api" >
           <BsEggFried />
         </Link>
+    
         <Link to="/login"></Link>
+        
 
         <Button
           className="border-noround pt-2"

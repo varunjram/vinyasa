@@ -1026,7 +1026,7 @@ export const products = [
     price: 800,
     categoryName: "Kids Clothing",
     image_url: "https://www.jcrew.com/s7-img-facade/BJ555_KF5019?hei=540&crop=0,0,680,0",
-    rating: 50,
+    rating: 5,
     strikePrice: 1200,
     off: 50,
   },

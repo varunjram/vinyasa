@@ -134,7 +134,7 @@ export default function Products() {
         </p>
         <div className="product-layout--products">
           {filteredProducts.map((product) => (
-            <ProductCard product={product} />
+            <ProductCard product={product} key={product?._id} />
           ))}
         </div>
       </section>

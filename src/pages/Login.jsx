@@ -12,13 +12,10 @@ import {useNavigate, useLocation} from "react-router-dom";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const {userState, userDispatch} = useContext(UserContext);
-  console.log("userState: ", userState);
-
+  const { userDispatch} = useContext(UserContext);
   const [form, setForm] = useState({email: "", password: ""});
   const submitHandler = async (e) => {
     e.preventDefault();
-    console.log("form: ", form);
     try {
       const {data, status} = await axios.post("/api/auth/login", form, {
         headers: {"Content-Type": "application/json"},
@@ -28,7 +25,7 @@ const Login = () => {
         localStorage.setItem("userToken", JSON.stringify(data?.encodedToken));
         localStorage.setItem("foundUser", JSON.stringify(data?.foundUser));
         userDispatch({type: Add_user, payload: {user: data.foundUser, isLoggedIn: true}});
-        navigate(location?.state?.from);
+        navigate(location?.state?.from ?? "/products" );
         console.log("location?.state?.from: ", location?.state?.from);
       }
 

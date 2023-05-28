@@ -1,23 +1,25 @@
-import React, {useState, useEffect, useContext, useRef} from "react";
-import {useParams} from "react-router-dom";
 import axios from "axios";
-import {UserContext} from "../context/UserContext";
-import {StoreContext} from "../context/StoreContext";
-import {Tooltip} from "primereact/tooltip";
-import {Button} from "primereact/button";
-import {BsHeart, BsHeartFill} from "react-icons/bs";
-import {addProductsToCart, addProductsToWishlist} from "../utils/apiCalls";
-import {Toast} from "primereact/toast";
+import { Button } from "primereact/button";
+import { Toast } from "primereact/toast";
+import React, { useContext, useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { Update_cart, Update_wishlist } from "../reducers/userReducer";
+import { addProductsToCart, addProductsToWishlist, removeProductsFromWishlist } from "../utils/apiCalls";
 
 export default function Product() {
   const toast = useRef(null);
   const {id} = useParams();
-  const {products} = useContext(StoreContext);
   const [product, setProduct] = useState();
-  console.log("id: ", id);
+  const {userState:{wishlist},userDispatch} = useContext(UserContext)
+  
   const {_id, name, brand, description, price, categoryName, image_url, rating, strikePrice, off} =
     product || {};
 
+    const isWishlistProduct = (id) => wishlist.some(product => product?._id === id )
+    
+    const updateCart = (payload) =>   userDispatch({type:Update_cart,payload})
+    const UpdateWishlist = (payload) =>   userDispatch({type:Update_wishlist,payload})
   const fetchProduct = async () => {
     try {
       const response = await axios(`/api/products/${id}`);
@@ -25,7 +27,6 @@ export default function Product() {
         setProduct(response.data.product);
       }
     } catch (error) {
-      console.log("error: ", error);
     }
   };
 
@@ -39,11 +40,10 @@ export default function Product() {
       <main className="single-product">
         <div className="single-product__img-container">
           <img src={image_url} alt="" srcset="" />
-          <p className="rating">{rating} 🌟</p>
-
+          <p className="rating">{rating}<i className="pl-2 bi-star-fill text-yellow-400"></i></p>
           <Button
             className="wish-list-btn text-xl	"
-            icon={false ? "bi bi-heart" : "bi bi-heart-fill"}
+            icon={isWishlistProduct(_id) ?  "bi bi-heart-fill":"bi bi-heart" }
             severity="danger"
             rounded
             text
@@ -51,7 +51,11 @@ export default function Product() {
             aria-label="Favorite"
             onClick={(e) => {
               e.stopPropagation();
-              addProductsToWishlist(product, toast);
+              if(isWishlistProduct){
+                removeProductsFromWishlist(_id,toast,UpdateWishlist)
+              }else{
+              addProductsToWishlist(product, toast,UpdateWishlist);
+              }
             }}
           />
         </div>
@@ -82,7 +86,7 @@ export default function Product() {
               <strong>Description:</strong>
               {description
                 ? description
-                : "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, ex."}
+                : "Lorem ipsum dolor sit amen consectetur advising elite. Impeding, ex."}
             </p>
             <p>
               <strong>Delivery :</strong> in 5 days
@@ -91,7 +95,7 @@ export default function Product() {
           <Button
             onClick={(e) => {
               e.stopPropagation();
-              addProductsToCart(product, toast);
+              addProductsToCart(product, toast,updateCart);
             }}
             className="mt-2 block">
             Add to Cart

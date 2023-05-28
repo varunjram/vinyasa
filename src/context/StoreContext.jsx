@@ -28,7 +28,6 @@ const StoreContextProvider = ({children}) => {
     (async () => {
       dispatch({type: Update_Products, payload: await fetchProducts()});
       dispatch({type: Update_Categories, payload: await fetchCategories()});
-      console.log("ASD");
     })();
   }, []);
   useEffect(() => {

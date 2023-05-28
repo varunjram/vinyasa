@@ -6,7 +6,7 @@ export default function NotFound() {
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setShowDiv(true);
-    }, 8000);
+    }, 4000);
 
     return () => {
       clearTimeout(timeoutId);
@@ -20,14 +20,16 @@ export default function NotFound() {
           color: "red",
           opacity: showDiv ? 1 : 0,
           transition: showDiv ? "opacity 2s ease-in-out" : "none",
+          textAlign:"center"
         }}>
         404: Page Not Found
       </h1>
-      <div style={{height: "100%"}}>
+      <div >
         <img
           src="https://cdn.dribbble.com/users/285475/screenshots/2083086/media/bbcfd1a1fecd97c1835792283a601f10.gif"
           width="60%"
           alt="404 not found"
+          className="flex m-auto"
         />
       </div>
     </>

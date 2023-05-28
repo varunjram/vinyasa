@@ -1,43 +1,16 @@
-import React, {useContext, useEffect, useState} from "react";
-import {StoreContext} from "../context/StoreContext";
-import axios from "axios";
+import React, { useContext } from "react";
 import ProductCard from "../components/ProductCard";
-import {UserContext} from "../context/UserContext";
+import { UserContext } from "../context/UserContext";
 
 export default function WishList() {
-  const {state, dispatch} = useContext(StoreContext);
-  const {userState} = useContext(UserContext);
-  console.log("userState: ", userState);
-
-  const [wishlist, setWishlist] = useState();
-
-  const token = localStorage.getItem("userToken");
-
-  const fetchCart = async () => {
-    console.log("token: ", token);
-
-    try {
-      const response = await axios("/api/user/wishlist", {
-        headers: {
-          authorization: token,
-        },
-      });
-
-      setWishlist(response?.data?.wishlist);
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    fetchCart();
-  }, []);
+  const {userState:{wishlist}} = useContext(UserContext);
 
   return (
     <div>
-      <h1 className="text-center"> My Wishlist </h1>
-      <pre>{JSON.stringify(userState, null, 2)}</pre>
-      <div className="flex gap-5">
+      <h1 className="text-center"> My Wishlist ({wishlist?.length}) </h1>
+      <div className="flex gap-5 m-5">
         {wishlist?.map((product) => (
-          <ProductCard product={product} />
+          <ProductCard product={product} key={`${product?._id}-${product?.name}`} />
         ))}
       </div>
     </div>

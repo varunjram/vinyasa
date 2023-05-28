@@ -1,29 +1,36 @@
-import React, {useRef} from "react";
-import {BsHeartFill, BsHeart} from "react-icons/bs";
-import {Tooltip} from "primereact/tooltip";
-import {useNavigate, Link} from "react-router-dom";
-import axios from "axios";
-import {Button} from "primereact/button";
-import {Toast} from "primereact/toast";
-import {addProductsToCart, addProductsToWishlist} from "../utils/apiCalls";
+import { Button } from "primereact/button";
+import { Toast } from "primereact/toast";
+import { Tooltip } from "primereact/tooltip";
+import React, { useContext, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { Update_cart, Update_wishlist } from "../reducers/userReducer";
+import { addProductsToCart, addProductsToWishlist, removeProductsFromWishlist } from "../utils/apiCalls";
 
 function ProductCard({product}) {
   const Navigate = useNavigate();
+  const Location = useLocation();
   const toast = useRef(null);
+  const {userState:{cart,wishlist} ,userDispatch ,isLoggedIn} =useContext(UserContext)
+  const isWishlistProduct = (id) => wishlist.some(product => product?._id === id )
 
-  const {_id, name, brand, description, price, categoryName, image_url, rating, strikePrice, off} =
-    product || {};
+  const {_id, name,  price,  image_url, rating, strikePrice, off} =
+  product || {};
+  console.log('cart: ', cart?.length);
+
+    const updateCart = (payload) =>   userDispatch({type:Update_cart,payload})
+    const UpdateWishlist = (payload) =>   userDispatch({type:Update_wishlist,payload})
 
   return (
     <>
-      <article className="product-card" onClick={() => Navigate(`/product/${_id}`)}>
-        <Toast ref={toast} />
+      <Toast ref={toast} />
+      <article className="product-card cursor-pointer" onClick={() => Navigate(`/product/${_id}`)}>
         <div className="product-card__img-container">
-          <img src={image_url} alt="" srcset="" />
-          <p className="rating">{rating} 🌟</p>
+          <img src={image_url} alt=""  />
+          <p className="rating">{rating}<i className="pl-2 bi-star-fill text-yellow-400"></i></p>
           <Button
             className="wish-list-btn text-xl	"
-            icon={false ? "bi bi-heart" : "bi bi-heart-fill"}
+            icon={isWishlistProduct(_id) ? "bi bi-heart-fill": "bi bi-heart" }
             severity="danger"
             rounded
             text
@@ -31,10 +38,15 @@ function ProductCard({product}) {
             aria-label="Favorite"
             onClick={(e) => {
               e.stopPropagation();
-              addProductsToWishlist(product, toast);
+            if (isLoggedIn){
+              isWishlistProduct(_id)
+              ?removeProductsFromWishlist(_id,toast,UpdateWishlist)
+              :addProductsToWishlist(product, toast,UpdateWishlist);
+            }else{
+              Navigate("/login",{state:{from:Location}})
+            }   
             }}
           />
-          {/* <button className="wish-list-btn">{false ? <BsHeart /> : <BsHeartFill />}</button> */}
         </div>
 
         <div className="product-card__data">
@@ -56,7 +68,7 @@ function ProductCard({product}) {
           <Button
             onClick={(e) => {
               e.stopPropagation();
-              addProductsToCart(product, toast);
+              addProductsToCart(product, toast,updateCart);
             }}
             className="mt-2 block">
             Add to Cart

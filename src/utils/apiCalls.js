@@ -12,7 +12,7 @@ const fetchCategories = async () => {
   console.log("categories", data);
   return data.categories;
 };
-const addProductsToWishlist = async (product, toast) => {
+const addProductsToWishlist = async (product, toast,updateWishlist) => {
   console.log("product: ", product);
   const token = localStorage.getItem("userToken");
   try {
@@ -31,21 +31,56 @@ const addProductsToWishlist = async (product, toast) => {
       toast.current.show({
         severity: "success",
         summary: "Success",
-        detail: "Product added to cart",
-        life: 3000,
+        detail: "Product added to Wishlist",
+         life: 2000,
       });
+      updateWishlist(response?.data?.wishlist)
     }
   } catch (error) {
     console.log("error: ", error);
     toast.current.show({
       severity: "error",
       summary: "Error",
-      detail: "Could not add product",
-      life: 3000,
+      detail: "Could not add product to Wishlist",
+       life: 2000,
     });
   }
 };
-const addProductsToCart = async (product, toast) => {
+const removeProductsFromWishlist = async (id,toast,updateWishlist) => {
+  const token = localStorage.getItem("userToken");
+  console.log('token: ', token);
+  try {
+    const response = await axios.delete(
+    `/api/user/wishlist/${id}`,
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    console.log("response-remove: ", response);
+    if (response.status === 200) {
+      console.log("response: ", response);
+      toast.current.show({
+        severity: "info",
+        summary: "Success",
+        detail: "Product removed to Wishlist",
+         life: 2000, 
+      });
+      updateWishlist(response?.data?.wishlist)
+    
+    }
+  } catch (error) {
+    console.log("error: ", error);
+    toast.current.show({
+      severity: "error",
+      summary: "Error",
+      detail: "Could not remove product to Wishlist",
+       life: 2000,
+    });
+  }
+};
+const addProductsToCart = async (product, toast ,updateCart) => {
   console.log("product: ", product);
   const token = localStorage.getItem("userToken");
   try {
@@ -65,18 +100,21 @@ const addProductsToCart = async (product, toast) => {
         severity: "success",
         summary: "Success",
         detail: "Product added to cart",
-        life: 3000,
+         life: 2000,
       });
+      updateCart(response?.data?.cart)
     }
   } catch (error) {
     console.log("error: ", error);
     toast.current.show({
       severity: "error",
       summary: "Error",
-      detail: "Could not add product",
-      life: 3000,
+      detail: "Could not add product to Cart",
+       life: 2000,
     });
   }
 };
 
-export {fetchProducts, fetchCategories, addProductsToCart, addProductsToWishlist};
+
+
+export {fetchProducts, fetchCategories, addProductsToCart, addProductsToWishlist, removeProductsFromWishlist};

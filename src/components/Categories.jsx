@@ -18,6 +18,7 @@ export default function Categories() {
         const {_id, categoryName, description, displayName, backgroundImage} = category;
         return (
           <div
+          key={`${_id}-${displayName}`}
             className="col-12 md:col-12 lg:col-4 surface-500 mt-5  h-12rem bg-cover category"
             style={{
               backgroundImage: `url(${backgroundImage})`,

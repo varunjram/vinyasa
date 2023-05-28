@@ -62,6 +62,7 @@ export default function Home() {
           responsiveOptions={responsiveOptions}
           itemTemplate={productTemplate}
           circular
+          autoplayInterval={2000}
           // onClick={() => Navigate("/products")}
         />
       </div>
@@ -72,7 +73,6 @@ export default function Home() {
               <img
                 src="/assets/images/categories/summer.jpg"
                 alt="summer banner"
-                srcset=""
                 className="w-full"
               />
             </div>
@@ -94,7 +94,6 @@ export default function Home() {
               <img
                 src="/assets/images/categories/winter.jpg"
                 alt="summer banner"
-                srcset=""
                 className="w-full"
               />
             </div>

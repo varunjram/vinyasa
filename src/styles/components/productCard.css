@@ -17,11 +17,13 @@
   right: 0.5rem;
 }
 .product-card__img-container .rating {
-  all: unset;
-  /* background-color: white; */
+  margin:0 ;
+  padding: 0.2rem 0.4rem;
+  border-top-left-radius: 0.5rem ;
   position: absolute;
   bottom: 0;
   right: 0;
+  background:linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%);
 }
 
 .product-card__img-container img {
