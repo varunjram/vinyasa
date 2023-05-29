@@ -1,31 +1,31 @@
-import React, {useContext, useState} from "react";
-import {InputText} from "primereact/inputtext";
-import {Button} from "primereact/button";
-import {Password} from "primereact/password";
+import React, { useContext, useState } from "react";
+import { InputText } from "primereact/inputtext";
+import { Button } from "primereact/button";
+import { Password } from "primereact/password";
 import axios from "axios";
-import {Link} from "react-router-dom";
-import {UserContext} from "../context/UserContext";
-import {Add_user} from "../reducers/userReducer";
+import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { Add_user } from "../reducers/userReducer";
 
-import {useNavigate, useLocation} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { userDispatch} = useContext(UserContext);
-  const [form, setForm] = useState({email: "", password: ""});
+  const { userDispatch } = useContext(UserContext);
+  const [form, setForm] = useState({ email: "", password: "" });
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const {data, status} = await axios.post("/api/auth/login", form, {
-        headers: {"Content-Type": "application/json"},
+      const { data, status } = await axios.post("/api/auth/login", form, {
+        headers: { "Content-Type": "application/json" },
       });
 
       if (status === 200) {
         localStorage.setItem("userToken", JSON.stringify(data?.encodedToken));
         localStorage.setItem("foundUser", JSON.stringify(data?.foundUser));
-        userDispatch({type: Add_user, payload: {user: data.foundUser, isLoggedIn: true}});
-        navigate(location?.state?.from ?? "/products" );
+        userDispatch({ type: Add_user, payload: { user: data.foundUser, isLoggedIn: true } });
+        navigate(location?.state?.from ?? "/products");
         console.log("location?.state?.from: ", location?.state?.from);
       }
 
@@ -36,14 +36,19 @@ const Login = () => {
     }
   };
 
-  const setFormField = (field, e) => setForm({...form, [field]: e.target.value});
+  const setFormField = (field, e) => setForm({ ...form, [field]: e.target.value });
   return (
     <div className="flex w-full h-screen">
       {/* <pre>{JSON.stringify(form, null, 2)}</pre> */}
       <div className="flex align-items-center justify-content-center flex-grow-1 ">
         <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
           <div className="text-center mb-5">
-            <img src="assets/images/logo/logo-small.jpg" alt="hyper" height={50} className="mb-3" />
+            <img
+              src="assets/images/logo/logo-small.jpg"
+              alt="hyper"
+              height={50}
+              className="mb-3"
+            />
             <div className="text-900 text-3xl font-medium mb-3">Welcome Back</div>
             <span className="text-600 font-medium line-height-3">Don't have an account?</span>
 
@@ -56,7 +61,9 @@ const Login = () => {
           {/* <pre>{JSON.stringify(userState, null, 2)}</pre> */}
 
           <form onSubmit={submitHandler}>
-            <label htmlFor="email" className="block text-900  mb-2">
+            <label
+              htmlFor="email"
+              className="block text-900  mb-2">
               Email
             </label>
             <InputText
@@ -70,7 +77,9 @@ const Login = () => {
             />
 
             <div className="">
-              <label htmlFor="password" className={`block text-900  mb-2`}>
+              <label
+                htmlFor="password"
+                className={`block text-900  mb-2`}>
                 Password
               </label>
 
@@ -82,7 +91,7 @@ const Login = () => {
                 toggleMask
                 feedback={false}
                 className={` w-full`}
-                inputStyle={{width: "100%"}}
+                inputStyle={{ width: "100%" }}
               />
             </div>
 
@@ -101,7 +110,12 @@ const Login = () => {
               </a>
             </div> */}
 
-            <Button type="submit" label="Sign In" icon="pi pi-user" className="w-full mt-5" />
+            <Button
+              type="submit"
+              label="Sign In"
+              icon="pi pi-user"
+              className="w-full mt-5"
+            />
           </form>
         </div>
       </div>

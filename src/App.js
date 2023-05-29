@@ -14,10 +14,8 @@ import "/node_modules/primeflex/primeflex.css";
 function App() {
   return (
     <>
-      <>
-        <Navigation />
-        <Routing />
-      </>
+      <Navigation />
+      <Routing />
     </>
   );
 }
