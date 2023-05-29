@@ -1,12 +1,12 @@
-import React, {useContext} from "react";
-import {Carousel} from "primereact/carousel";
-import {Button} from "primereact/button";
+import React, { useContext } from "react";
+import { Carousel } from "primereact/carousel";
+import { Button } from "primereact/button";
 import Categories from "../components/Categories";
-import {StoreContext} from "../context/StoreContext";
-import {useNavigate} from "react-router-dom";
+import { StoreContext } from "../context/StoreContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const {state} = useContext(StoreContext);
+  const { state } = useContext(StoreContext);
   const Navigate = useNavigate();
   const responsiveOptions = [
     {
@@ -43,10 +43,16 @@ export default function Home() {
       src: "/assets/images/hero/5.jpg",
     },
   ];
-  const productTemplate = ({src}, i) => {
+  const productTemplate = ({ src }, i) => {
     return (
-      <div className="hero-container cursor-pointer grid" onClick={() => Navigate("/products")}>
-        <img src={src} alt={`hero${i + 1}`} className="hero-container-img col-12" />
+      <div
+        className="hero-container cursor-pointer grid"
+        onClick={() => Navigate("/products")}>
+        <img
+          src={src}
+          alt={`hero${i + 1}`}
+          className="hero-container-img col-12"
+        />
       </div>
     );
   };
@@ -68,7 +74,9 @@ export default function Home() {
       </div>
       <section className="grid collection w-full">
         <article className="lg:col-6 md:col-6 sm:col-12  ">
-          <div className="collection-card m-5 " style={{backgroundColor: "lightcoral"}}>
+          <div
+            className="collection-card m-5 "
+            style={{ backgroundColor: "lightcoral" }}>
             <div className="collection-card__image">
               <img
                 src="/assets/images/categories/summer.jpg"
@@ -78,7 +86,10 @@ export default function Home() {
             </div>
             <div className="collection-card__data">
               <p>New Arrivals</p>
-              <Button className="text-2xl text-900" text onClick={() => Navigate("/products")}>
+              <Button
+                className="text-2xl text-900"
+                text
+                onClick={() => Navigate("/products")}>
                 Explore
               </Button>
               <div>
@@ -89,7 +100,9 @@ export default function Home() {
           </div>
         </article>
         <article className="lg:col-6 md:col-6 sm:col-12 ">
-          <div className="collection-card m-5  " style={{backgroundColor: "lightskyblue"}}>
+          <div
+            className="collection-card m-5  "
+            style={{ backgroundColor: "lightskyblue" }}>
             <div className="collection-card__image">
               <img
                 src="/assets/images/categories/winter.jpg"
@@ -99,7 +112,10 @@ export default function Home() {
             </div>
             <div className="collection-card__data">
               <p>New Arrivals</p>
-              <Button className="text-2xl text-900" text onClick={() => Navigate("/products")}>
+              <Button
+                className="text-2xl text-900"
+                text
+                onClick={() => Navigate("/products")}>
                 Explore
               </Button>
               <div>

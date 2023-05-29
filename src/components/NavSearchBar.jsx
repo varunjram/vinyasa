@@ -48,7 +48,7 @@ export default function NavSearchBar() {
           })}
         </ul>
       )}
-      {filteredProducts?.length === 0 && query !== "" && (
+      {filteredProducts?.length === 0 && query && (
         <p className="no-results m-0 text-xl">No items to show</p>
       )}
     </div>
