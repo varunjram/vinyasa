@@ -1,17 +1,45 @@
-const StoreReducer = (state, {type, payload}) => {
+const store = {
+  categories: [],
+  products: [],
+  isProductsLoading: false,
+  isCategoriesLoading: false,
+  setProductsError: {},
+  setCategoriesError: {},
+};
+
+const StoreReducer = (state, { type, payload }) => {
   switch (type) {
-    case "Update_Products":
-      return {...state, products: payload};
-    case "Update_Categories":
-      return {...state, categories: [...payload]};
-    case "Update_Test":
-      return {...state, test: state.test + 1};
+    case "UPDATE_PRODUCTS":
+      return { ...state, products: payload };
+    case "UPDATE_CATEGORIES":
+      return { ...state, categories: [...payload] };
+    case "PRODUCTS_LOADING":
+      return { ...state, isProductsLoading: payload };
+    case "CATEGORIES_LOADING":
+      return { ...state, isCategoriesLoading: payload };
+    case "SET_PRODUCTS_ERROR":
+      return { ...state, setProductsError: payload };
+    case "SET_CATEGORIES_ERROR":
+      return { ...state, setCategoriesError: payload };
     default:
       throw new Error("Not a Reducer Function");
   }
 };
-const Update_Test = "Update_Test";
-const Update_Products = "Update_Products";
-const Update_Categories = "Update_Categories";
-export {Update_Test, Update_Products, Update_Categories};
+// Action Types
+const UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
+const PRODUCTS_LOADING = "PRODUCTS_LOADING";
+const CATEGORIES_LOADING = "CATEGORIES_LOADING";
+const SET_PRODUCTS_ERROR = "SET_PRODUCTS_ERROR";
+const SET_CATEGORIES_ERROR = "SET_CATEGORIES_ERROR";
+const UPDATE_CATEGORIES = "UPDATE_CATEGORIES";
+
+export {
+  store,
+  UPDATE_PRODUCTS,
+  PRODUCTS_LOADING,
+  CATEGORIES_LOADING,
+  SET_PRODUCTS_ERROR,
+  SET_CATEGORIES_ERROR,
+  UPDATE_CATEGORIES,
+};
 export default StoreReducer;

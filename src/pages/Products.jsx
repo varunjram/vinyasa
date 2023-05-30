@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 
 import { Button } from "primereact/button";
 import { Checkbox } from "primereact/checkbox";
@@ -15,6 +15,7 @@ import {
 } from "../reducers/productFilterReducer";
 import filterBY from "../utils/productFilterFunction";
 import ProductCard from "../components/ProductCard";
+import { Toast } from "primereact/toast";
 
 export default function Products() {
   const {
@@ -24,7 +25,7 @@ export default function Products() {
     dispatchFilter,
   } = useContext(StoreContext);
 
-  console.log("category-filter: ", category);
+  const toast = useRef(null);
 
   const onCategoryChange = (e) => {
     console.log("e: ", e);
@@ -80,6 +81,7 @@ export default function Products() {
 
   return (
     <main className="product-layout">
+      <Toast ref={toast} />
       <section className="product-layout--filter">
         <div className="flex justify-content-center">
           <p>Filters</p>
@@ -142,6 +144,7 @@ export default function Products() {
             <ProductCard
               product={product}
               key={product?._id}
+              toast={toast}
             />
           ))}
         </div>

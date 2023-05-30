@@ -13,22 +13,6 @@ export default function Cart() {
   console.log("cart: ", cart);
   const orderValue = cart.reduce(
     (acc, curr) => {
-      // {
-      //   "_id": "75ffe0bf-a612-4b79-977c-cf9d313406cf",
-      //   "name": "Flannel pajama pant",
-      //   "brand": "Puma",
-      //   "price": 2927,
-      //   "categoryName": "Men's Clothing",
-      //   "image_url": "https://www.jcrew.com/s7-img-facade/AZ665_WX8063_m?fmt=jpeg&qlt=90,0&resMode=sharp&op_usm=.1,0,0,0&crop=0,0,0,0&wid=540&hei=540",
-      //   "rating": 3,
-      //   "strikePrice": 4097.8,
-      //   "off": 40,
-      //   "id": "31",
-      //   "createdAt": "2023-05-28T20:17:20+05:30",
-      //   "updatedAt": "2023-05-28T20:17:20+05:30",
-      //   "qty": 1
-      // }
-
       console.log("curr: ", curr);
       // curr;
       return {

@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { Suspense, useContext } from "react";
 import { Carousel } from "primereact/carousel";
 import { Button } from "primereact/button";
 import Categories from "../components/Categories";
 import { StoreContext } from "../context/StoreContext";
 import { useNavigate } from "react-router-dom";
+import FullPageLoading from "../components/FullPageLoading";
 
 export default function Home() {
-  const { state } = useContext(StoreContext);
+  const { isProductsLoading, isCategoriesLoading } = useContext(StoreContext);
   const Navigate = useNavigate();
   const responsiveOptions = [
     {
@@ -58,82 +59,79 @@ export default function Home() {
   };
 
   return (
-    <div className="grid">
-      <Categories />
-      <div className="col-12">
-        <Carousel
-          value={heroComponentData}
-          numVisible={1}
-          numScroll={1}
-          responsiveOptions={responsiveOptions}
-          itemTemplate={productTemplate}
-          circular
-          autoplayInterval={2000}
-          // onClick={() => Navigate("/products")}
-        />
-      </div>
-      <section className="grid collection w-full">
-        <article className="lg:col-6 md:col-6 sm:col-12  ">
-          <div
-            className="collection-card m-5 "
-            style={{ backgroundColor: "lightcoral" }}>
-            <div className="collection-card__image">
-              <img
-                src="/assets/images/categories/summer.jpg"
-                alt="summer banner"
-                className="w-full"
-              />
-            </div>
-            <div className="collection-card__data">
-              <p>New Arrivals</p>
-              <Button
-                className="text-2xl text-900"
-                text
-                onClick={() => Navigate("/products")}>
-                Explore
-              </Button>
-              <div>
-                <h3>Summer Collection</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam!</p>
-              </div>
-            </div>
+    <>
+      {isProductsLoading && isCategoriesLoading && <FullPageLoading />}
+      {!isProductsLoading && !isCategoriesLoading && (
+        <div className="grid">
+          <Categories />
+          <div className="col-12">
+            <Carousel
+              value={heroComponentData}
+              numVisible={1}
+              numScroll={1}
+              responsiveOptions={responsiveOptions}
+              itemTemplate={productTemplate}
+              circular
+              autoplayInterval={2000}
+              // onClick={() => Navigate("/products")}
+            />
           </div>
-        </article>
-        <article className="lg:col-6 md:col-6 sm:col-12 ">
-          <div
-            className="collection-card m-5  "
-            style={{ backgroundColor: "lightskyblue" }}>
-            <div className="collection-card__image">
-              <img
-                src="/assets/images/categories/winter.jpg"
-                alt="summer banner"
-                className="w-full"
-              />
-            </div>
-            <div className="collection-card__data">
-              <p>New Arrivals</p>
-              <Button
-                className="text-2xl text-900"
-                text
-                onClick={() => Navigate("/products")}>
-                Explore
-              </Button>
-              <div>
-                <h3>Winter Collection</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam!</p>
+          <section className="grid collection w-full">
+            <article className="lg:col-6 md:col-6 sm:col-12  ">
+              <div
+                className="collection-card m-5 "
+                style={{ backgroundColor: "lightcoral" }}>
+                <div className="collection-card__image">
+                  <img
+                    src="/assets/images/categories/summer.jpg"
+                    alt="summer banner"
+                    className="w-full"
+                  />
+                </div>
+                <div className="collection-card__data">
+                  <p>New Arrivals</p>
+                  <Button
+                    className="text-2xl text-900"
+                    text
+                    onClick={() => Navigate("/products")}>
+                    Explore
+                  </Button>
+                  <div>
+                    <h3>Summer Collection</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam!</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </article>
-      </section>
-    </div>
+            </article>
+            <article className="lg:col-6 md:col-6 sm:col-12 ">
+              <div
+                className="collection-card m-5  "
+                style={{ backgroundColor: "lightskyblue" }}>
+                <div className="collection-card__image">
+                  <img
+                    src="/assets/images/categories/winter.jpg"
+                    alt="summer banner"
+                    className="w-full"
+                  />
+                </div>
+                <div className="collection-card__data">
+                  <p>New Arrivals</p>
+                  <Button
+                    className="text-2xl text-900"
+                    text
+                    onClick={() => Navigate("/products")}>
+                    Explore
+                  </Button>
+                  <div>
+                    <h3>Winter Collection</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ullam!</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+        </div>
+      )}
+    </>
   );
 }
-// return (
-//     <div>
-//       <h1>Home Page123</h1>
-//       <img src="/assets/images/1.jpg" alt="hero-1" />
-//       <img src={myImage} alt="hero-2" />
-//     </div>
-// );
-// }

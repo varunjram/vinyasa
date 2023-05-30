@@ -1,15 +1,19 @@
-import { createContext, useEffect, useReducer } from "react";
-import StoreReducer, { Update_Categories, Update_Products } from "../reducers/storeReducer";
+import { createContext, useEffect, useReducer, useState } from "react";
+import StoreReducer, {
+  CATEGORIES_LOADING,
+  PRODUCTS_LOADING,
+  SET_CATEGORIES_ERROR,
+  SET_PRODUCTS_ERROR,
+  UPDATE_CATEGORIES,
+  UPDATE_PRODUCTS,
+  Update_Categories,
+  Update_Products,
+  store,
+} from "../reducers/storeReducer";
 import ProductFilterReducer, { Update_Category } from "../reducers/productFilterReducer";
 import { fetchCategories, fetchProducts } from "../utils/apiCalls";
 
 export const StoreContext = createContext();
-
-const store = {
-  categories: [],
-  products: [],
-  test: 1452,
-};
 
 const initialProductFilters = {
   price: 200,
@@ -20,19 +24,26 @@ const initialProductFilters = {
 
 const StoreContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(StoreReducer, store);
-  // console.log("state: ", state);
   const [filter, dispatchFilter] = useReducer(ProductFilterReducer, initialProductFilters);
-  // console.log("filter: ", filter);
+
+  // Actions Creeators
+
+  const updateProducts = (payload) => dispatch({ type: UPDATE_PRODUCTS, payload });
+  const setProductsLoading = (payload) => dispatch({ type: PRODUCTS_LOADING, payload });
+  const setProductsError = (payload) => dispatch({ type: SET_PRODUCTS_ERROR, payload });
+
+  const updateCategories = (payload) => dispatch({ type: UPDATE_CATEGORIES, payload });
+  const setCategoriesLoading = (payload) => dispatch({ type: CATEGORIES_LOADING, payload });
+  const setCategoriesError = (payload) => dispatch({ type: SET_CATEGORIES_ERROR, payload });
 
   useEffect(() => {
-    (async () => {
-      dispatch({ type: Update_Products, payload: await fetchProducts() });
-      dispatch({ type: Update_Categories, payload: await fetchCategories() });
-    })();
+    fetchProducts({ setProductsLoading, setProductsError, updateProducts });
+    fetchCategories({ updateCategories, setCategoriesLoading, setCategoriesError });
   }, []);
+
   useEffect(() => {
     dispatchFilter({ type: Update_Category, payload: [state.categories[2]] });
-  }, [state.categories]);
+  }, [state?.categories]);
   return (
     <StoreContext.Provider value={{ ...state, filter, dispatch, dispatchFilter }}>
       {children}

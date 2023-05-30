@@ -11,10 +11,9 @@ import {
   removeProductsFromWishlist,
 } from "../utils/apiCalls";
 
-function ProductCard({ product }) {
+function ProductCard({ product, toast }) {
   const Navigate = useNavigate();
   const Location = useLocation();
-  const toast = useRef(null);
   const {
     userState: { cart, wishlist, isLoggedIn },
     userDispatch,
