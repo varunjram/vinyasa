@@ -12,31 +12,30 @@ import {
 } from "../utils/apiCalls";
 
 function ProductCard({ product, toast }) {
+  console.log("toast: ", toast.current);
   const Navigate = useNavigate();
   const Location = useLocation();
   const {
     userState: { cart, wishlist, isLoggedIn },
     userDispatch,
   } = useContext(UserContext);
+  const { _id, name, price, image_url, rating, strikePrice, off } = product || {};
+
   const isWishlistProduct = (id) => wishlist.some((product) => product?._id === id);
   const isCartProduct = (id) => cart.some((product) => product?._id === id);
-
-  const { _id, name, price, image_url, rating, strikePrice, off } = product || {};
-  console.log("cart: ", cart?.length);
-
   const updateCart = (payload) => userDispatch({ type: Update_cart, payload });
   const UpdateWishlist = (payload) => userDispatch({ type: Update_wishlist, payload });
 
   return (
     <>
-      <Toast ref={toast} />
       <article
         className="product-card cursor-pointer"
         onClick={() => Navigate(`/product/${_id}`)}>
         <div className="product-card__img-container">
           <img
             src={image_url}
-            alt=""
+            alt={name}
+            onerror="this.src='/assets/images/product_fall_back.jpg'"
           />
           <p className="rating">
             {rating}

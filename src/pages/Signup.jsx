@@ -1,39 +1,53 @@
-import React, {useState} from "react";
-import {InputText} from "primereact/inputtext";
-import {Button} from "primereact/button";
-import {Password} from "primereact/password";
 import axios from "axios";
+import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
+import React, { useContext, useState } from "react";
 
-import {Link} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
+import { LOGIN } from "../reducers/userReducer";
 
 const Signup = () => {
-  const [form, setForm] = useState({email: "", password: ""});
+  const { userDispatch } = useContext(UserContext);
+  const [form, setForm] = useState({ email: "", password: "" });
+
+  const Navigate = useNavigate();
+  const location = useLocation();
 
   const submitHandler = async (e) => {
+    console.log("form: ", form);
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "/api/auth/login",
-        {email: "adarshbalika@gmail.com", password: "adarshbalika"},
-        {
-          headers: {"Content-Type": "application/json"},
-        }
-      );
-      console.log("response: ", response);
+      const { status, data } = await axios.post("/api/auth/signup", form, {
+        headers: { "Content-Type": "application/json" },
+      });
+      if (status === 201) {
+        localStorage.setItem("userToken", JSON.stringify(data?.encodedToken));
+        localStorage.setItem("foundUser", JSON.stringify(data?.foundUser));
+        userDispatch({ type: LOGIN, payload: { user: data.foundUser, isLoggedIn: true } });
+        Navigate(location?.state?.from ?? "/products");
+        console.log("location?.state?.from: ", location?.state?.from);
+      }
     } catch (error) {
       console.log("error: ", error);
       console.log("response:-3");
     }
   };
 
-  const setFormField = (field, e) => setForm({...form, [field]: e.target.value});
+  const setFormField = (field, e) => setForm({ ...form, [field]: e.target.value });
   return (
     <div className="flex w-full h-screen">
       {/* <pre>{JSON.stringify(form, null, 2)}</pre> */}
       <div className="flex align-items-center justify-content-center flex-grow-1 ">
         <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
           <div className="text-center mb-5">
-            <img src="assets/images/logo/logo-small.jpg" alt="hyper" height={50} className="mb-3" />
+            <img
+              src="assets/images/logo/logo-small.jpg"
+              alt="hyper"
+              height={50}
+              className="mb-3"
+            />
             <div className="text-900 text-3xl font-medium mb-3">Register Now!</div>
             <span className="text-600 font-medium line-height-3">Do you have an account?</span>
 
@@ -45,7 +59,9 @@ const Signup = () => {
           </div>
 
           <form onSubmit={submitHandler}>
-            <label htmlFor="email" className="block text-900  mb-2">
+            <label
+              htmlFor="email"
+              className="block text-900  mb-2">
               Email
             </label>
             <InputText
@@ -59,7 +75,9 @@ const Signup = () => {
             />
 
             <div className="">
-              <label htmlFor="password" className={`block text-900  mb-2`}>
+              <label
+                htmlFor="password"
+                className={`block text-900  mb-2`}>
                 Password
               </label>
 
@@ -71,7 +89,7 @@ const Signup = () => {
                 toggleMask
                 feedback={false}
                 className={` w-full`}
-                inputStyle={{width: "100%"}}
+                inputStyle={{ width: "100%" }}
               />
             </div>
 
@@ -90,7 +108,12 @@ const Signup = () => {
               </a>
             </div> */}
 
-            <Button type="submit" label="Sign In" icon="pi pi-user" className="w-full mt-5" />
+            <Button
+              type="submit"
+              label="Sign In"
+              icon="pi pi-user"
+              className="w-full mt-5"
+            />
           </form>
         </div>
       </div>

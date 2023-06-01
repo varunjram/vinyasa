@@ -134,10 +134,58 @@ const addProductsToCart = async (product, toast, updateCart) => {
   }
 };
 
+const removeCartProduct = async (id, toast = null, updateCart) => {
+  const token = localStorage.getItem("userToken");
+  try {
+    const response = await axios.delete(`/api/user/cart/${id}`, {
+      headers: {
+        authorization: token,
+      },
+    });
+    if (response.status === 200) {
+      updateCart(response?.data?.cart);
+      toast?.current?.show({
+        severity: "info",
+        summary: "Info.",
+        detail: "Item Removed from the Cart",
+        life: 2000,
+      });
+    }
+  } catch (error) {
+    console.log("error delete: ", error);
+  }
+};
+
+const updateProductQuantity = async (id, type, toast, updateCart) => {
+  const token = localStorage.getItem("userToken");
+  try {
+    const response = await axios.post(
+      `/api/user/cart/${id}`,
+      {
+        action: {
+          type,
+        },
+      },
+      {
+        headers: {
+          authorization: token,
+        },
+      }
+    );
+    if (response.status === 200) {
+      updateCart(response?.data?.cart);
+    }
+  } catch (error) {
+    console.log("error: ", error);
+  }
+};
+
 export {
   fetchProducts,
   fetchCategories,
   addProductsToCart,
+  removeCartProduct,
+  updateProductQuantity,
   addProductsToWishlist,
   removeProductsFromWishlist,
 };

@@ -5,16 +5,23 @@ import { Password } from "primereact/password";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
-import { Add_user } from "../reducers/userReducer";
-
+import { LOGIN } from "../reducers/userReducer";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { userDispatch } = useContext(UserContext);
+  const {
+    userState: { isLoggedIn },
+    userDispatch,
+  } = useContext(UserContext);
   const [form, setForm] = useState({ email: "", password: "" });
+
+  isLoggedIn && navigate(location?.state?.from ?? "/");
+
   const submitHandler = async (e) => {
+    console.log("form: ", "form");
+
     e.preventDefault();
     try {
       const { data, status } = await axios.post("/api/auth/login", form, {
@@ -24,7 +31,15 @@ const Login = () => {
       if (status === 200) {
         localStorage.setItem("userToken", JSON.stringify(data?.encodedToken));
         localStorage.setItem("foundUser", JSON.stringify(data?.foundUser));
-        userDispatch({ type: Add_user, payload: { user: data.foundUser, isLoggedIn: true } });
+        userDispatch({
+          type: LOGIN,
+          payload: {
+            user: data.foundUser,
+            isLoggedIn: true,
+            cart: data.foundUser.cart,
+            wishlist: data.foundUser.wishlist,
+          },
+        });
         navigate(location?.state?.from ?? "/products");
         console.log("location?.state?.from: ", location?.state?.from);
       }

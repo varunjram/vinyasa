@@ -1,31 +1,31 @@
-import React, { useContext, useRef } from "react";
-import { BsBookmarkHeart, BsEggFried, BsFilePerson, BsSearch } from "react-icons/bs";
-import { FaOpencart } from "react-icons/fa";
+import React, {useContext, useRef} from "react";
+import {BsBookmarkHeart, BsEggFried, BsFilePerson, BsSearch} from "react-icons/bs";
+import {FaOpencart} from "react-icons/fa";
 
-import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../context/UserContext";
-import { Button } from "primereact/button";
-import { Logout } from "../reducers/userReducer";
-import { Tooltip } from "primereact/tooltip";
-import { Menu } from "primereact/menu";
-import { Badge } from "primereact/badge";
+import {Link, useNavigate} from "react-router-dom";
+import {UserContext} from "../context/UserContext";
+import {Button} from "primereact/button";
+import {LOGOUT} from "../reducers/userReducer";
+import {Tooltip} from "primereact/tooltip";
+import {Menu} from "primereact/menu";
+import {Badge} from "primereact/badge";
 import NavSearchBar from "./NavSearchBar";
 
 export default function Navigation() {
   let mobileMenueItems = [
-    { label: "New", icon: "pi pi-fw pi-plus" },
-    { label: "Delete", icon: "pi pi-fw pi-trash" },
+    {label: "New", icon: "pi pi-fw pi-plus"},
+    {label: "Delete", icon: "pi pi-fw pi-trash"},
   ];
   const menu = useRef(null);
 
   const Navigate = useNavigate();
   const {
-    userState: { isLoggedIn, cart, wishlist },
+    userState: {isLoggedIn, cart, wishlist},
     userDispatch,
   } = useContext(UserContext);
   console.log("cart: ", cart?.length);
   return (
-    <div className="nav-container z-5 bg-white">
+    <div className="nav-container z-5">
       <Tooltip target=".wishlist" />
       <Tooltip target=".cart" />
       <Tooltip target=".my-profile" />
@@ -77,7 +77,7 @@ export default function Navigation() {
           className="border-noround pt-2"
           onClick={() => {
             if (isLoggedIn) {
-              userDispatch({ type: Logout });
+              userDispatch({type: LOGOUT});
             } else {
               Navigate("/login");
             }

@@ -7,7 +7,8 @@ export default function WishList() {
   const {
     userState: { wishlist },
   } = useContext(UserContext);
-  const toast = useRef();
+  const toast = useRef(null);
+  console.log("toast: ", toast.current);
 
   return (
     <div>

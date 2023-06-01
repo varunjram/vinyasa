@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import CartProduct from "../components/CartProduct";
 import { Button } from "primereact/button";
 import { UserContext } from "../context/UserContext";
+import { Toast } from "primereact/toast";
 
 const DELIVERY_CHARGES = 499;
 export default function Cart() {
@@ -9,6 +10,7 @@ export default function Cart() {
     userState: { cart },
   } = useContext(UserContext);
   console.log("cart: ", cart);
+  const toast = useRef();
 
   console.log("cart: ", cart);
   const orderValue = cart.reduce(
@@ -31,6 +33,7 @@ export default function Cart() {
 
   return (
     <>
+      <Toast ref={toast} />
       {cart?.length > 0 ? (
         <main>
           <h1 className="text-center"> My Cart 🛒</h1>
@@ -40,6 +43,7 @@ export default function Cart() {
                 <CartProduct
                   product={product}
                   key={product?._id}
+                  toast={toast}
                 />
               ))}
             </div>

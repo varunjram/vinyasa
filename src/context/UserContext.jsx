@@ -1,13 +1,8 @@
-import {createContext, useEffect, useReducer, } from "react";
-import userReducer, {Add_user} from "../reducers/userReducer";
+import {createContext, useEffect, useReducer} from "react";
+import userReducer, {LOGIN, initialUserState} from "../reducers/userReducer";
 
 export const UserContext = createContext();
-const initialUserState = {
-  user: {  },
-  isLoggedIn:false,
-  cart:[],
-  wishlist:[],
-};
+
 const UserContextProvider = ({children}) => {
   const [userState, userDispatch] = useReducer(userReducer, initialUserState);
   const context = {
@@ -15,11 +10,19 @@ const UserContextProvider = ({children}) => {
     userDispatch,
   };
 
+  console.log("userState: ", userState);
   useEffect(() => {
-    const _user = localStorage.getItem("foundUser");
-    console.log(" _user: ", JSON.parse(_user));
-    userDispatch({type: Add_user, payload: {user: JSON.parse(_user)}});
-  },[]);
+    const _user = JSON.parse(localStorage.getItem("foundUser"));
+    const token = localStorage.getItem("userToken");
+    console.log("_user: ", _user);
+    console.log("_user: ", Boolean(token));
+    if (_user?._id && token) {
+      userDispatch({
+        type: LOGIN,
+        payload: {user: _user, isLoggedIn: token ? true : false},
+      });
+    }
+  }, []);
 
   return (
     <>
