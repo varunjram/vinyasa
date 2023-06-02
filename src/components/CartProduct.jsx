@@ -61,7 +61,7 @@ function CartProduct({ product, toast }) {
               outlined
               className="w-2rem h-2rem"
               onClick={() => {
-                updateProductQuantity("increment");
+                updateProductQuantity(_id, "increment", null, updateCart);
               }}
             />
           </div>

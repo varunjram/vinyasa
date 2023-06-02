@@ -18,7 +18,10 @@ export default function AddressForm({
   const toast = useRef(null);
   return (
     <>
-      <Toast ref={toast} />
+      <Toast
+        ref={toast}
+        position="bottom-right"
+      />
       <form className={`grid  ${formVisible ? null : "hidden"} scalein animation-duration-500 `}>
         <div className="field col-12  mt-4">
           <span className="p-float-label">

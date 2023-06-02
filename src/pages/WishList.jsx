@@ -12,7 +12,10 @@ export default function WishList() {
 
   return (
     <div>
-      <Toast ref={toast} />
+      <Toast
+        ref={toast}
+        position="bottom-right"
+      />
       <h1 className="text-center"> My Wishlist ({wishlist?.length}) </h1>
       <div className="flex gap-5 m-5">
         {wishlist?.map((product) => (
