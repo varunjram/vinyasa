@@ -50,7 +50,7 @@ export default function Profile() {
               <div className="w-8rem ,h-8rem  border-circle overflow-hidden margin-auto">
                 <img
                   className="w-full "
-                  src="https://xsgames.co/randomusers/assets/avatars/male/47.jpg"
+                  src="https://source.boringavatars.com/beam"
                   alt="profile-pic"
                   style={{ objectFit: "cover" }}
                 />

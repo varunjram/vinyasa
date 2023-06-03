@@ -86,12 +86,13 @@ export default function Products() {
         position="bottom-right"
       />
       <section className="product-layout--filter text-cyan-900">
-        <div className="flex justify-content-center">
+        <div className="flex justify-content-between">
           <p>Filters</p>
           <Button
             text
-            onClick={() => dispatchFilter({ type: Reset_Filters })}>
-            Clear{" "}
+            onClick={() => dispatchFilter({ type: Reset_Filters })}
+            className="text-cyan-900">
+            Clear
           </Button>
         </div>
         <PriceRange
