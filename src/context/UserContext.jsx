@@ -1,9 +1,9 @@
-import {createContext, useEffect, useReducer} from "react";
-import userReducer, {LOGIN, initialUserState} from "../reducers/userReducer";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import userReducer, { LOGIN, initialUserState } from "../reducers/userReducer";
 
 export const UserContext = createContext();
 
-const UserContextProvider = ({children}) => {
+const UserContextProvider = ({ children }) => {
   const [userState, userDispatch] = useReducer(userReducer, initialUserState);
   const context = {
     userState,
@@ -19,7 +19,7 @@ const UserContextProvider = ({children}) => {
     if (_user?._id && token) {
       userDispatch({
         type: LOGIN,
-        payload: {user: _user, isLoggedIn: token ? true : false},
+        payload: { user: _user, isLoggedIn: token ? true : false },
       });
     }
   }, []);
@@ -30,5 +30,7 @@ const UserContextProvider = ({children}) => {
     </>
   );
 };
+
+export const useUser = () => useContext(UserContext);
 
 export default UserContextProvider;

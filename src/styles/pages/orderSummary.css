@@ -1,0 +1,19 @@
+.os-product-cards-container,
+.os-total {
+  border-top: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.os-product-cards-container {
+  max-height: 16rem;
+  overflow: scroll;
+  padding: 0.5rem 0;
+}
+
+.os-product-cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+.os-total {
+  /* padding: 0.2rem 0; */
+}

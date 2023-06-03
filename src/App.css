@@ -58,7 +58,9 @@
 @import "./styles/components/product.css";
 @import "./styles/components/cartProduct.css";
 @import "./styles/components/navSearchBar.css";
+@import "./styles/components/summaryProductCard.css";
 @import "./styles/pages/home.css";
 @import "./styles/pages/products.css";
 @import "./styles/pages/cart.css";
 @import "./styles/general.css";
+@import "./styles/pages/orderSummary.css";

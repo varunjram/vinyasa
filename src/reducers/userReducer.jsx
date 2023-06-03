@@ -95,6 +95,7 @@ const initialUserState = {
       fullAddress: "#321 Elm Avenue",
     },
   ],
+  orderSummary: {},
 };
 
 const userReducer = (state, { type, payload }) => {
@@ -118,6 +119,8 @@ const userReducer = (state, { type, payload }) => {
     case "Update_wishlist":
       console.log("state-after: ", { ...state, wishlist: payload });
       return { ...state, wishlist: payload };
+    case "ADD_ORDER_SUMMARY":
+      return { ...state, orderSummary: payload };
     default:
       throw new Error("Not a Reducer Function");
   }
@@ -128,6 +131,7 @@ const LOGIN = "LOGIN";
 const UPDATE_DEFAULT_ADDRESS = "UPDATE_DEFAULT_ADDRESS";
 const ADD_ADDRESS = "ADD_ADDRESS";
 const DELETE_ADDRESS = "DELETE_ADDRESS";
+const ADD_ORDER_SUMMARY = "ADD_ORDER_SUMMARY";
 const Update_cart = "Update_cart";
 const Update_wishlist = "Update_wishlist";
 export {
@@ -137,6 +141,7 @@ export {
   UPDATE_DEFAULT_ADDRESS,
   ADD_ADDRESS,
   DELETE_ADDRESS,
+  ADD_ORDER_SUMMARY,
   Update_cart,
   Update_wishlist,
 };

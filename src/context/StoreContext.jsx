@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer, useState } from "react";
+import { createContext, useEffect, useReducer, useContext } from "react";
 import StoreReducer, {
   CATEGORIES_LOADING,
   PRODUCTS_LOADING,
@@ -6,8 +6,6 @@ import StoreReducer, {
   SET_PRODUCTS_ERROR,
   UPDATE_CATEGORIES,
   UPDATE_PRODUCTS,
-  Update_Categories,
-  Update_Products,
   store,
 } from "../reducers/storeReducer";
 import ProductFilterReducer, { Update_Category } from "../reducers/productFilterReducer";
@@ -50,5 +48,8 @@ const StoreContextProvider = ({ children }) => {
     </StoreContext.Provider>
   );
 };
+
+// Custom Hook
+export const useStore = () => useContext(StoreContext);
 
 export default StoreContextProvider;

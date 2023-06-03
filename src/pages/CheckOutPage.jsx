@@ -6,21 +6,39 @@ import calculateOrderValue from "../utils/orderValueFunction";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import { ADD_ORDER_SUMMARY, Update_cart } from "../reducers/userReducer";
+import { removeCartProduct } from "../utils/apiCalls";
+import moment from "moment";
 
 const DELIVERY_CHARGES = 499;
 
 export default function CheckOutPage() {
   const toast = useRef(null);
   const {
-    userState: { user, addressBook, randomAddressBook, cart },
+    userState: { addressBook, cart },
+    userDispatch,
   } = useContext(UserContext);
   const Navigate = useNavigate();
 
-  const { name, lastName, title, id, isDefault, fullAddress, city, state, country, phone, email } =
-    addressBook.find((_add) => _add.isDefault);
+  const { name, lastName, fullAddress, city, state, country, phone, email } = addressBook.find(
+    (_add) => _add.isDefault
+  );
 
   const orderValue = calculateOrderValue(cart);
+
   const paymentAccepted = () => {
+    const updateCart = (payload) => userDispatch({ type: Update_cart, payload });
+    const emptyCart = cart?.map?.(({ _id }) => removeCartProduct(_id, null, updateCart));
+    userDispatch({
+      type: ADD_ORDER_SUMMARY,
+      payload: {
+        orderValue,
+        cart,
+        shippingDate: moment().add(3, "days").format("MMMM Do YYYY, h:mm:ss a"),
+        orderNumber: Math.floor(Math.random() * 100000000),
+      },
+    });
+    userDispatch({ type: Update_cart, payload: [] });
     Navigate("/order-summary");
   };
   const paymentRejected = () => {
@@ -29,26 +47,6 @@ export default function CheckOutPage() {
       summary: "Information",
       detail: "Please try again after some time",
       life: 3000,
-    });
-  };
-  const accept = () => alert("dsd");
-
-  const reject = () => {
-    // toast.current.show({
-    //   severity: "warn",
-    //   summary: "Rejected",
-    //   detail: "You have rejected",
-    //   life: 3000,
-    // });
-  };
-
-  const paymentConfirm = () => {
-    confirmDialog({
-      message: "Proceed and make payment?",
-      // header: "Confirmation",
-      // icon: "pi pi-exclamation-triangle",
-      accept: () => paymentSuccessful(),
-      reject,
     });
   };
 

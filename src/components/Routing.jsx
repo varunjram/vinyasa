@@ -14,6 +14,7 @@ import Profile from "../pages/Profile";
 import Product from "../pages/Product";
 import CheckOutPage from "../pages/CheckOutPage";
 import Test from "../pages/Test";
+import OrderSummary from "../pages/OrderSummary";
 
 export default function Routing() {
   return (
@@ -58,6 +59,10 @@ export default function Routing() {
         <Route
           path="/checkout"
           element={<CheckOutPage />}
+        />
+        <Route
+          path="/order-summary"
+          element={<OrderSummary />}
         />
         <Route
           path="/test"
