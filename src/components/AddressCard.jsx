@@ -7,10 +7,7 @@ import React, { useContext } from "react";
 import { Button } from "primereact/button";
 
 export default function AddressCard({ address, toast, col = 6 }) {
-  const {
-    userState: { user, addressBook, randomAddressBook },
-    userDispatch,
-  } = useContext(UserContext);
+  const { userDispatch } = useContext(UserContext);
   const footer = (id) => (
     <div className="flex justify-content-end">
       <Button

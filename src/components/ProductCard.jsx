@@ -78,7 +78,7 @@ function ProductCard({ product, toast }) {
               </span>
               <span className="strike-price">&#8377;{Math.floor(strikePrice)}</span>
             </div>
-            <p className="off">{off}% off</p>
+            <p className="off text-green-500">{off}% off</p>
           </div>
           <Button
             severity={isCartProduct(_id) ? "help" : null}

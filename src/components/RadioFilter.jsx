@@ -1,14 +1,16 @@
-import React, {useState} from "react";
-import {RadioButton} from "primereact/radiobutton";
+import { RadioButton } from "primereact/radiobutton";
+import React from "react";
 
-function RadioFilter({Heading, Categories, InitialValue, onChange}) {
+function RadioFilter({ Heading, Categories, InitialValue, onChange }) {
   return (
     <div className="card  justify-content-center">
       <p>{Heading}</p>
       <div className="flex flex-column gap-3">
         {Categories.map((category) => {
           return (
-            <div key={category.id} className="flex align-items-center">
+            <div
+              key={category.id}
+              className="flex align-items-center">
               <RadioButton
                 inputId={category.id}
                 name="category"
@@ -16,7 +18,9 @@ function RadioFilter({Heading, Categories, InitialValue, onChange}) {
                 onChange={onChange}
                 checked={InitialValue.id === category.id}
               />
-              <label htmlFor={category.id} className="ml-2">
+              <label
+                htmlFor={category.id}
+                className="ml-2">
                 {category.name}
               </label>
             </div>

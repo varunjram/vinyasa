@@ -1,13 +1,11 @@
 import { Button } from "primereact/button";
 import { Card } from "primereact/card";
-import { Checkbox } from "primereact/checkbox";
 import { TabPanel, TabView } from "primereact/tabview";
-import React, { useRef, useContext, useState } from "react";
-import { UserContext } from "../context/UserContext";
-import { DELETE_ADDRESS, UPDATE_DEFAULT_ADDRESS } from "../reducers/userReducer";
-import AddressForm from "../components/AddressForm";
 import { Toast } from "primereact/toast";
+import React, { useContext, useRef, useState } from "react";
 import AddressCard from "../components/AddressCard";
+import AddressForm from "../components/AddressForm";
+import { UserContext } from "../context/UserContext";
 
 const ADDRESS_INPUT_FIELDS = {
   title: "",
