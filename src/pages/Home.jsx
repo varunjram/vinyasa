@@ -1,4 +1,4 @@
-import React, { Suspense, useContext } from "react";
+import React, { useContext } from "react";
 import { Carousel } from "primereact/carousel";
 import { Button } from "primereact/button";
 import Categories from "../components/Categories";

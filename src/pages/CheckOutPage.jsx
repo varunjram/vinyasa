@@ -28,7 +28,7 @@ export default function CheckOutPage() {
 
   const paymentAccepted = () => {
     const updateCart = (payload) => userDispatch({ type: Update_cart, payload });
-    const emptyCart = cart?.map?.(({ _id }) => removeCartProduct(_id, null, updateCart));
+    cart?.map?.(({ _id }) => removeCartProduct(_id, null, updateCart));
     userDispatch({
       type: ADD_ORDER_SUMMARY,
       payload: {

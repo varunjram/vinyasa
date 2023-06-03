@@ -1,13 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useContext, useState } from "react";
 import { BsSearch } from "react-icons/bs";
-import { UserContext } from "../context/UserContext";
+import { Link } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
-import { Link, useNavigate } from "react-router-dom";
 
 export default function NavSearchBar() {
   const [query, setQuery] = useState();
   const { products } = useContext(StoreContext);
-  const Navigate = useNavigate();
 
   console.log("!query: ", query);
   const filterByQuery = (query, products) =>
