@@ -8,11 +8,12 @@ import { Button } from "primereact/button";
 
 export default function AddressCard({ address, toast, col = 6 }) {
   const { userDispatch } = useContext(UserContext);
-  const footer = (id) => (
+  const footer = (id, isDefault) => (
     <div className="flex justify-content-end">
       <Button
         // label="Remove"
         icon="bi bi-trash"
+        disabled={isDefault}
         onClick={() => {
           userDispatch({ type: DELETE_ADDRESS, payload: id });
           toast.current.show({
@@ -43,7 +44,7 @@ export default function AddressCard({ address, toast, col = 6 }) {
       <Card
         title={`${name}, ${lastName}`}
         subTitle={title}
-        footer={footer(id)}
+        footer={footer(id, isDefault)}
         header={header(id, isDefault)}
         className=" m-2 shadow-3 ">
         <p className="m-0">{`${fullAddress} , ${city} , ${state} , ${country},`}</p>

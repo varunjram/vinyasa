@@ -6,6 +6,7 @@ import React, { useContext, useRef, useState } from "react";
 import AddressCard from "../components/AddressCard";
 import AddressForm from "../components/AddressForm";
 import { UserContext } from "../context/UserContext";
+import moment from "moment";
 
 const ADDRESS_INPUT_FIELDS = {
   title: "",
@@ -66,7 +67,8 @@ export default function Profile() {
               ].map(({ prop, key }) => (
                 <p>
                   <strong>{prop} : </strong>
-                  {user[key]}
+                  {console.log("key: ", key)}
+                  {key === "createdAt" ? moment(user[key]).format("MMMM Do YYYY") : user[key]}
                 </p>
               ))}
               <p>

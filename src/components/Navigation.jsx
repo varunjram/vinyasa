@@ -23,9 +23,9 @@ export default function Navigation() {
     userState: { isLoggedIn, cart, wishlist },
     userDispatch,
   } = useContext(UserContext);
-  console.log("cart: ", cart?.length);
+
   return (
-    <div className="nav-container z-5">
+    <div className="nav-container z-5 bg-black-alpha-90">
       <Tooltip target=".wishlist" />
       <Tooltip target=".cart" />
       <Tooltip target=".my-profile" />
@@ -36,10 +36,7 @@ export default function Navigation() {
           Vinyasa
         </Link>
       </div>
-      {/* <div className="nav-center">
-        <BsSearch className="inline" />
-        <input className="input" type="search" name="" id="search" placeholder="Search" />
-      </div> */}
+
       <NavSearchBar />
       <nav className="nav-right pr-5 hidden md:flex lg:flex">
         <Link
@@ -67,9 +64,9 @@ export default function Navigation() {
             <BsFilePerson />
           </Link>
         )}
-        <Link to="/mock-api">
+        {/* <Link to="/mock-api">
           <BsEggFried />
-        </Link>
+        </Link> */}
 
         <Link to="/login"></Link>
 
