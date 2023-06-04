@@ -6,10 +6,14 @@ import { Update_cart, Update_wishlist } from "../reducers/userReducer";
 import { addProductsToWishlist, removeCartProduct, updateProductQuantity } from "../utils/apiCalls";
 
 function CartProduct({ product, toast }) {
-  const { userDispatch } = useContext(UserContext);
+  const {
+    userDispatch,
+    userState: { wishlist },
+  } = useContext(UserContext);
   const { _id, name, price, image_url, strikePrice, off, qty } = product || {};
   const updateCart = (payload) => userDispatch({ type: Update_cart, payload });
   const UpdateWishlist = (payload) => userDispatch({ type: Update_wishlist, payload });
+  console.log("wishList: ", wishlist);
 
   return (
     <>
@@ -74,7 +78,9 @@ function CartProduct({ product, toast }) {
           <Button
             className="block w-full border-noround"
             onClick={() => {
-              addProductsToWishlist(product, toast, UpdateWishlist);
+              if (!wishlist.some((item) => _id === item?._id)) {
+                addProductsToWishlist(product, toast, UpdateWishlist);
+              }
               removeCartProduct(_id, null, updateCart);
             }}>
             Move to wishList

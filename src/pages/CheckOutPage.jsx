@@ -101,7 +101,7 @@ export default function CheckOutPage() {
                 <h3>Deliver To : </h3>
                 <p>
                   <strong>To : </strong>
-                  {`${name}, ${lastName}, ${fullAddress} , ${city} , ${state} , ${country}, `}
+                  {`${name}, ${lastName}, ${fullAddress} , ${city} , ${state} , ${country}`}
                 </p>
                 <p>
                   <strong>Ph:</strong>

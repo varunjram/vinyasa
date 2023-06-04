@@ -28,7 +28,11 @@ export default function Profile() {
   const [address, setAddress] = useState(ADDRESS_INPUT_FIELDS);
   const [formVisible, setFormVisible] = useState(false);
 
+  console.log("user: ", user);
   const fetchRandomUser = randomAddressBook[Math.floor(Math.random() * 6)];
+  const { name, lastName, fullAddress, city, state, country, phone, email } = addressBook.find(
+    (_add) => _add.isDefault
+  );
 
   return (
     <>
@@ -54,13 +58,21 @@ export default function Profile() {
                 />
               </div>
 
-              {["_id", "id", "cart", "wishlist"].forEach((ele) => delete user[ele])}
-              {Object.entries(user).map(([prop, value]) => (
+              {[
+                { prop: "Name", key: "firstName" },
+                { prop: "Last name", key: "lastName" },
+                { prop: "email", key: "email" },
+                { prop: "Created On", key: "createdAt" },
+              ].map(({ prop, key }) => (
                 <p>
                   <strong>{prop} : </strong>
-                  {value}
+                  {user[key]}
                 </p>
               ))}
+              <p>
+                <strong>Default Address : </strong>
+                {`${name}, ${lastName}, ${fullAddress} , ${city} , ${state} , ${country}`}
+              </p>
             </Card>
           </TabPanel>
           <TabPanel

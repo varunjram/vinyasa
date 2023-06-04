@@ -84,7 +84,7 @@ const removeProductsFromWishlist = async (id, toast, updateWishlist) => {
       toast.current.show({
         severity: "info",
         summary: "Success",
-        detail: "Product removed to Wishlist",
+        detail: "Product removed from Wishlist",
         life: 2000,
       });
       updateWishlist(response?.data?.wishlist);
@@ -94,7 +94,7 @@ const removeProductsFromWishlist = async (id, toast, updateWishlist) => {
     toast.current.show({
       severity: "error",
       summary: "Error",
-      detail: "Could not remove product to Wishlist",
+      detail: "Could not remove product from Wishlist",
       life: 2000,
     });
   }
@@ -147,7 +147,7 @@ const removeCartProduct = async (id, toast = null, updateCart) => {
       toast?.current?.show({
         severity: "info",
         summary: "Info.",
-        detail: "Item Removed from the Cart",
+        detail: "Item removed from the Cart",
         life: 2000,
       });
     }

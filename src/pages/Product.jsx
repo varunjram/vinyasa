@@ -122,10 +122,9 @@ export default function Product() {
                     </span>
                     <span className="strike-price">&#8377;{Math.floor(strikePrice)}</span>
                   </div>
-                  <p className="off">{off}% off</p>
+                  <p className="off text-green-400">{off}% off</p>
                 </div>
               </div>
-              <hr />
               <div className="single-product__data__middle">
                 <p>
                   <strong>Availability :</strong>In Stock

@@ -146,7 +146,7 @@ export default function AddressForm({
                 return toast.current.show({
                   severity: "error",
                   summary: "Error",
-                  detail: "All fields are eequired",
+                  detail: "All fields are required",
                   life: 3000,
                 });
 
@@ -155,7 +155,7 @@ export default function AddressForm({
               toast.current.show({
                 severity: "success",
                 summary: "Success",
-                detail: "New User Added",
+                detail: "New user added",
                 life: 2000,
               });
             }}
