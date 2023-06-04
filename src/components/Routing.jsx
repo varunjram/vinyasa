@@ -1,20 +1,20 @@
 import React from "react";
 
-import { Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
+import { Route, Routes } from "react-router-dom";
 import Cart from "../pages/Cart";
-import WishList from "../pages/WishList";
-import Products from "../pages/Products";
+import CheckOutPage from "../pages/CheckOutPage";
+import Home from "../pages/Home";
+import Login from "../pages/Login";
 import MockAPI from "../pages/MockApi";
 import NotFound from "../pages/NotFound";
-import Login from "../pages/Login";
-import Signup from "../pages/Signup";
-import AuthWrapper from "./AuthWrapper";
-import Profile from "../pages/Profile";
-import Product from "../pages/Product";
-import CheckOutPage from "../pages/CheckOutPage";
-import Test from "../pages/Test";
 import OrderSummary from "../pages/OrderSummary";
+import Product from "../pages/Product";
+import Products from "../pages/Products";
+import Profile from "../pages/Profile";
+import Signup from "../pages/Signup";
+import Test from "../pages/Test";
+import WishList from "../pages/WishList";
+import AuthWrapper from "./AuthWrapper";
 
 export default function Routing() {
   return (

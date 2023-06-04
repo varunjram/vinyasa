@@ -1,10 +1,9 @@
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
-
-import React, { useRef, useState } from "react";
-import { ADD_ADDRESS } from "../reducers/userReducer";
 import { Toast } from "primereact/toast";
+import React, { useRef } from "react";
+import { ADD_ADDRESS } from "../reducers/userReducer";
 
 export default function AddressForm({
   address,
@@ -147,7 +146,7 @@ export default function AddressForm({
                 return toast.current.show({
                   severity: "error",
                   summary: "Error",
-                  detail: "All fields are eequired",
+                  detail: "All fields are required",
                   life: 3000,
                 });
 
@@ -156,7 +155,7 @@ export default function AddressForm({
               toast.current.show({
                 severity: "success",
                 summary: "Success",
-                detail: "New User Added",
+                detail: "New user added",
                 life: 2000,
               });
             }}

@@ -45,7 +45,7 @@ export default function Product() {
   const updateCart = (payload) => userDispatch({ type: Update_cart, payload });
   const UpdateWishlist = (payload) => userDispatch({ type: Update_wishlist, payload });
 
-  const fetchProduct = async () => {
+  const fetchProduct = async (id) => {
     setProductLoading(true);
     try {
       const response = await axios(`/api/products/${id}`);
@@ -53,7 +53,6 @@ export default function Product() {
         setProduct(response.data.product);
       }
     } catch (error) {
-      console.log("error: ", error);
       setProductFetchError(error);
     } finally {
       setProductLoading(false);
@@ -61,7 +60,7 @@ export default function Product() {
   };
 
   useEffect(() => {
-    fetchProduct();
+    fetchProduct(id);
   }, [id]);
 
   return (
@@ -123,10 +122,9 @@ export default function Product() {
                     </span>
                     <span className="strike-price">&#8377;{Math.floor(strikePrice)}</span>
                   </div>
-                  <p className="off">{off}% off</p>
+                  <p className="off text-green-400">{off}% off</p>
                 </div>
               </div>
-              <hr />
               <div className="single-product__data__middle">
                 <p>
                   <strong>Availability :</strong>In Stock

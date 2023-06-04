@@ -1,7 +1,6 @@
 import React from "react";
 import { useUser } from "../context/UserContext";
 import SummaryProductCard from "../components/SummaryProductCard";
-import calculateOrderValue from "../utils/orderValueFunction";
 
 const DELIVERY_CHARGES = 499;
 
