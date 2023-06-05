@@ -46,3 +46,15 @@
   position: sticky;
   top: 100px;
 }
+@media screen and (width < 770px) {
+  .cart__layout {
+    flex-direction: column;
+  }
+}
+
+@media screen and (width < 426px) {
+ 
+  .cart__layout .cart__products {
+    width: auto;
+  }
+}

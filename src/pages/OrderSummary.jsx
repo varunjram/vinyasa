@@ -1,6 +1,7 @@
 import React from "react";
 import { useUser } from "../context/UserContext";
 import SummaryProductCard from "../components/SummaryProductCard";
+import { useLocation, useParams } from "react-router-dom";
 
 const DELIVERY_CHARGES = 499;
 
@@ -11,9 +12,13 @@ export default function OrderSummary() {
     },
   } = useUser();
 
+  const { pathname } = useLocation();
+
   return (
     <>
-      <main className="order-summary card w-4 mt-5 m-auto border-round-xl surface-50 p-3">
+      <main
+        className={`order-summary card mt-5 m-auto border-round-xl surface-50 p-3 
+      ${pathname === "/order-summary" ? "w-4" : null} `}>
         <h2 className="text-center m-0">Order Summary</h2>
         <h3 className="m-0">Order: {orderNumber}</h3>
         <p className="text-cyan-600 font-medium  m-0 ">Delivered by {shippingDate}</p>

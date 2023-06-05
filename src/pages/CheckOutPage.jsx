@@ -66,7 +66,7 @@ export default function CheckOutPage() {
       />
       <ConfirmDialog header="Payment" />
       <h2 className="text-center">Check Out</h2>
-      <main className="grid">
+      <main className="grid col-12">
         <section className="address-section col-6">
           {addressBook?.map((address) => (
             <AddressCard
@@ -76,7 +76,7 @@ export default function CheckOutPage() {
             />
           ))}
         </section>
-        <section className="order-summary col-6">
+        <section className="order-summary col-5">
           <div className="cart__value">
             <section className="price-details">
               <h3 className="heading">Order Summary</h3>

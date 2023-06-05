@@ -14,7 +14,7 @@ export default function WishList() {
     <div>
       <Toast
         ref={toast}
-        position="bottom-right"
+        // position="bottom-right"
       />
       <h1 className="text-center"> My Wishlist ({wishlist?.length}) </h1>
       <div className="flex flex-wrap gap-5 m-5">

@@ -23,7 +23,7 @@ export default function Cart() {
     <>
       <Toast
         ref={toast}
-        position="bottom-right"
+        // position="bottom-right"
       />
       {cart?.length > 0 ? (
         <main>

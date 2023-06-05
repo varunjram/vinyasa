@@ -19,7 +19,7 @@ export default function AddressForm({
     <>
       <Toast
         ref={toast}
-        position="bottom-right"
+        // position="bottom-right"
       />
       <form className={`grid  ${formVisible ? null : "hidden"} scalein animation-duration-500 `}>
         <div className="field col-12  mt-4">
@@ -156,7 +156,7 @@ export default function AddressForm({
                 severity: "success",
                 summary: "Success",
                 detail: "New user added",
-                life: 2000,
+                life: 1000,
               });
             }}
           />

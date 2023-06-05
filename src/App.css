@@ -52,6 +52,7 @@
 
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 
+@import "./styles/general.css";
 @import "./styles/variables.css";
 @import "./styles/components/navigation.css";
 @import "./styles/components/categories.css";
@@ -63,5 +64,5 @@
 @import "./styles/pages/home.css";
 @import "./styles/pages/products.css";
 @import "./styles/pages/cart.css";
-@import "./styles/general.css";
+@import "./styles/pages/checkOutPage.css";
 @import "./styles/pages/orderSummary.css";

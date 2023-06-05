@@ -7,6 +7,7 @@ import AddressCard from "../components/AddressCard";
 import AddressForm from "../components/AddressForm";
 import { UserContext } from "../context/UserContext";
 import moment from "moment";
+import OrderSummary from "./OrderSummary";
 
 const ADDRESS_INPUT_FIELDS = {
   title: "",
@@ -39,7 +40,7 @@ export default function Profile() {
     <>
       <Toast
         ref={toast}
-        position="bottom-right"
+        // position="bottom-right"
       />
       <div
         className="card"
@@ -105,6 +106,11 @@ export default function Profile() {
                 </Card>
               </article>
             </div>
+          </TabPanel>
+          <TabPanel
+            header="Order Summary"
+            headerClassName="w-6">
+            <OrderSummary />
           </TabPanel>
         </TabView>
       </div>

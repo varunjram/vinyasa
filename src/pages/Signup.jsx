@@ -36,7 +36,7 @@ const Signup = () => {
         severity: "error",
         summary: "Error",
         detail: "All fields are required to SignUp",
-        life: 2000,
+        life: 1000,
       });
       return;
     }
@@ -46,7 +46,7 @@ const Signup = () => {
         severity: "error",
         summary: "Error",
         detail: "Password and Confirm-Password does not match",
-        life: 2000,
+        life: 1000,
       });
       return;
     }
@@ -71,7 +71,7 @@ const Signup = () => {
     <>
       <Toast
         ref={toast}
-        position="bottom-right"
+        // position="bottom-right"
       />
       <div className="flex w-full h-screen">
         <div className="flex align-items-center justify-content-center flex-grow-1 ">
