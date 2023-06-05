@@ -55,7 +55,7 @@ function CartProduct({ product, toast }) {
             />
             <input
               type="text"
-              className="inline-block ml-2 mr-2 w-2rem"
+              className="inline-block ml-2 mr-2 w-2rem text-center"
               value={qty}
             />
             <Button

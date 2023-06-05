@@ -67,7 +67,7 @@ export default function Product() {
     <>
       <Toast
         ref={toast}
-        position="bottom-right"
+        // position="bottom-right"
       />
       <h1 className="text-center">Product Page</h1>
       {productLoading ? (

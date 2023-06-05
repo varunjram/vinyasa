@@ -5,7 +5,7 @@
   margin-left: 2rem;
   border-top-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
-  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  box-shadow: 0 0 10px 0 rgba(129, 212, 250, 0.45) inset;
   padding: 2rem;
   position: relative;
   --border-radius-corner: 3rem;
@@ -83,4 +83,22 @@
 }
 .cart-product--content-box .quantity p {
   margin-right: 1rem;
+}
+
+@media screen and (width < 426px) {
+  .cart-product {
+    flex-direction: column;
+    width: auto;
+    margin-right: 2rem;
+  }
+
+  .cart-product--image-box {
+    width: 12rem;
+    display: inline-block;
+    margin: auto;
+  }
+
+  .cart-product--image-box {
+    width: 100%;
+  }
 }

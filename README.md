@@ -5,13 +5,15 @@
 ---
   An E-Commerce website for brand new clothes
 </div>
+
 ### Built with:
- - ReactJS
- - React router  
- - Prime React UI
- - CSS
- - Axios
- - Mockbee(backend)
+
+- ReactJS
+- React router
+- Prime React UI
+- CSS
+- Axios
+- Mockbee(backend)
 
 ### How to install and run locally ?
 

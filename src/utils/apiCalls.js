@@ -55,7 +55,7 @@ const addProductsToWishlist = async (product, toast, updateWishlist) => {
         severity: "success",
         summary: "Success",
         detail: "Product added to Wishlist",
-        life: 2000,
+        life: 1000,
       });
       updateWishlist(response?.data?.wishlist);
     }
@@ -65,7 +65,7 @@ const addProductsToWishlist = async (product, toast, updateWishlist) => {
       severity: "error",
       summary: "Error",
       detail: "Could not add product to Wishlist",
-      life: 2000,
+      life: 1000,
     });
   }
 };
@@ -85,7 +85,7 @@ const removeProductsFromWishlist = async (id, toast, updateWishlist) => {
         severity: "info",
         summary: "Success",
         detail: "Product removed from Wishlist",
-        life: 2000,
+        life: 1000,
       });
       updateWishlist(response?.data?.wishlist);
     }
@@ -95,7 +95,7 @@ const removeProductsFromWishlist = async (id, toast, updateWishlist) => {
       severity: "error",
       summary: "Error",
       detail: "Could not remove product from Wishlist",
-      life: 2000,
+      life: 1000,
     });
   }
 };
@@ -119,7 +119,7 @@ const addProductsToCart = async (product, toast, updateCart) => {
         severity: "success",
         summary: "Success",
         detail: "Product added to cart",
-        life: 2000,
+        life: 1000,
       });
       updateCart(response?.data?.cart);
     }
@@ -129,7 +129,7 @@ const addProductsToCart = async (product, toast, updateCart) => {
       severity: "error",
       summary: "Error",
       detail: "Could not add product to Cart",
-      life: 2000,
+      life: 1000,
     });
   }
 };
@@ -148,7 +148,7 @@ const removeCartProduct = async (id, toast = null, updateCart) => {
         severity: "info",
         summary: "Info.",
         detail: "Item removed from the Cart",
-        life: 2000,
+        life: 1000,
       });
     }
   } catch (error) {
