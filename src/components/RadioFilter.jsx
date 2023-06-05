@@ -5,7 +5,7 @@ function RadioFilter({ Heading, Categories, InitialValue, onChange }) {
   return (
     <div className="card  justify-content-center">
       <p>{Heading}</p>
-      <div className="flex flex-column gap-3">
+      <div className="flex flex-column gap-1">
         {Categories.map((category) => {
           return (
             <div

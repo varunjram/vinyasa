@@ -1,21 +1,16 @@
-import React, { useContext, useRef } from "react";
-import { BsBookmarkHeart, BsEggFried, BsFilePerson } from "react-icons/bs";
-import { FaOpencart } from "react-icons/fa";
-
 import { Badge } from "primereact/badge";
 import { Button } from "primereact/button";
 import { Menu } from "primereact/menu";
 import { Tooltip } from "primereact/tooltip";
+import React, { useContext, useRef } from "react";
+import { BsBookmarkHeart, BsFilePerson } from "react-icons/bs";
+import { FaOpencart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { LOGOUT } from "../reducers/userReducer";
 import NavSearchBar from "./NavSearchBar";
 
 export default function Navigation() {
-  let mobileMenueItems = [
-    { label: "New", icon: "pi pi-fw pi-plus" },
-    { label: "Delete", icon: "pi pi-fw pi-trash" },
-  ];
   const menu = useRef(null);
 
   const Navigate = useNavigate();
@@ -23,6 +18,54 @@ export default function Navigation() {
     userState: { isLoggedIn, cart, wishlist },
     userDispatch,
   } = useContext(UserContext);
+
+  function handleUserLog(isLoggedIn, userDispatch, Navigate) {
+    if (isLoggedIn) {
+      userDispatch({ type: LOGOUT });
+    } else {
+      Navigate("/login");
+    }
+  }
+  function LogINOutIcon(isLoggedIn) {
+    return isLoggedIn ? "bi bi-door-open" : "bi bi-door-closed";
+  }
+  let mobileMenuItems = [
+    {
+      label: "Home",
+      icon: "bi bi-house",
+      command: () => {
+        Navigate("/");
+      },
+    },
+    {
+      label: "Wishlist",
+      icon: "bi bi-heart",
+      command: () => {
+        Navigate("/wishlist");
+      },
+    },
+    {
+      label: "Cart",
+      icon: "bi bi-cart",
+      command: () => {
+        Navigate("/cart");
+      },
+    },
+    {
+      label: isLoggedIn ? "Logout" : "Login",
+      icon: LogINOutIcon(isLoggedIn),
+      command: () => {
+        handleUserLog(isLoggedIn, userDispatch, Navigate);
+      },
+    },
+    {
+      label: "Sign up",
+      icon: "bi bi-pencil-square",
+      command: () => {
+        Navigate("/signup");
+      },
+    },
+  ];
 
   return (
     <div className="nav-container z-5 bg-black-alpha-90">
@@ -64,28 +107,21 @@ export default function Navigation() {
             <BsFilePerson />
           </Link>
         )}
-        {/* <Link to="/mock-api">
-          <BsEggFried />
-        </Link> */}
 
         <Link to="/login"></Link>
 
         <Button
           className="border-noround pt-2"
           onClick={() => {
-            if (isLoggedIn) {
-              userDispatch({ type: LOGOUT });
-            } else {
-              Navigate("/login");
-            }
+            handleUserLog(isLoggedIn, userDispatch, Navigate);
           }}>
           {isLoggedIn ? "Logout" : "Login"}
         </Button>
       </nav>
 
-      <nav className=" md:hidden lg:hidden">
+      <nav className=" md:hidden lg:hidden ">
         <Menu
-          model={mobileMenueItems}
+          model={mobileMenuItems}
           popup
           ref={menu}
         />
@@ -95,6 +131,7 @@ export default function Navigation() {
           rounded
           text
           aria-label="Menu"
+          className="text-5xl mr-1"
         />
       </nav>
     </div>

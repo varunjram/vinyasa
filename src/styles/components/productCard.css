@@ -23,7 +23,7 @@
   padding: 0.2rem 0.4rem;
   border-top-left-radius: 0.5rem;
   position: absolute;
-  bottom: 4px;
+  bottom: 0;
   right: 0;
   /* background: linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%); */
   background-color: var(--custom-theme-color-1);

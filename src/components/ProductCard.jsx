@@ -29,7 +29,7 @@ function ProductCard({ product, toast }) {
   return (
     <>
       <article
-        className="product-card cursor-pointer"
+        className="product-card cursor-pointer m-auto"
         onClick={() => Navigate(`/product/${_id}`)}>
         <div className="product-card__img-container">
           <img
