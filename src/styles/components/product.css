@@ -21,7 +21,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  background: linear-gradient(90deg, #43c6ac 0%, #f8ffae 100%);
+  background-color: var(--custom-theme-color-1);
 }
 
 .single-product__img-container .wish-list-btn {

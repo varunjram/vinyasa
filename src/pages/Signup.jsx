@@ -10,7 +10,10 @@ import { LOGIN } from "../reducers/userReducer";
 import { Toast } from "primereact/toast";
 
 const Signup = () => {
-  const { userDispatch } = useContext(UserContext);
+  const {
+    userDispatch,
+    userState: { addressBook },
+  } = useContext(UserContext);
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -164,26 +167,26 @@ const Signup = () => {
                 />
               </div>
 
-              {/* <div className="flex align-items-center justify-content-between mb-6">
-              <div className="flex align-items-center">
-                <Checkbox
-                  id="rememberme"
-                  onChange={(e) => setChecked(e.checked)}
-                  checked={checked}
-                  className="mr-2"
-                />
-                <label htmlFor="rememberme">Remember me</label>
-              </div>
-              <a className="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">
-                Forgot your password?
-              </a>
-            </div> */}
-
               <Button
                 type="submit"
                 label="Sign In"
                 icon="pi pi-user"
                 className="w-full mt-5"
+              />
+              <Button
+                type="submit"
+                label="Guest Sign In"
+                icon="pi pi-user"
+                className="w-full mt-5"
+                onClick={() => {
+                  setForm({
+                    firstName: "Thousand",
+                    lastName: "Sunny",
+                    email: "thousandSunny@gmail.com",
+                    password: "guest",
+                    confirmPassword: "guest",
+                  });
+                }}
               />
             </form>
           </div>

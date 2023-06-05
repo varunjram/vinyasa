@@ -49,9 +49,10 @@
   padding: 0.5rem;
 }
 
-@media screen and (width < 400px) {
+@media screen and (width <= 426px) {
   .nav-center {
     margin: 0rem 2rem;
+    display: none;
   }
   .nav-center input {
     width: 5rem;

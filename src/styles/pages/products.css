@@ -1,12 +1,18 @@
 .product-layout {
   display: flex;
+  position: relative;
+}
+.filter-container {
+  flex-basis: 250px;
+  flex-shrink: 0;
 }
 
 .product-layout--filter {
   background-color: gainsboro;
   padding: 0.2rem 2rem;
-  flex-basis: 250px;
-  flex-shrink: 0;
+  width: 250px;
+  height: 100%;
+  position: fixed;
 }
 .product-layout--display {
   /* flex-grow: 1; */
@@ -19,8 +25,22 @@
   flex-wrap: wrap;
 }
 
-@media screen and (width < 420px) {
+.mobile--filter--btn .filter--btn {
+  position: fixed;
+  top: 90vh;
+  right: 1rem;
+  display: none;
+}
+
+@media screen and (width < 770px) {
   .product-layout--filter {
+    height: 100%;
+    position: static;
+  }
+  .mobile--filter--btn .filter--btn {
+    display: block;
+  }
+  .filter-container {
     display: none;
   }
 }

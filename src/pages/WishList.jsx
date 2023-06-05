@@ -17,7 +17,7 @@ export default function WishList() {
         position="bottom-right"
       />
       <h1 className="text-center"> My Wishlist ({wishlist?.length}) </h1>
-      <div className="flex gap-5 m-5">
+      <div className="flex flex-wrap gap-5 m-5">
         {wishlist?.map((product) => (
           <ProductCard
             product={product}

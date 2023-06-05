@@ -15,7 +15,11 @@ export default function Categories() {
           <div className="col-12 md:col-12 lg:col-4 p-2 ">
             <div
               key={`${_id}-${displayName}`}
-              className="w-full surface-500 mt-5  h-12rem bg-cover category"
+              className="w-full surface-500 mt-5  h-12rem bg-cover category cursor-pointer"
+              onClick={() => {
+                dispatchFilter({ type: Update_Category, payload: [category] });
+                Navigation("/products");
+              }}
               style={{
                 backgroundImage: `url(${backgroundImage})`,
               }}>
@@ -33,10 +37,6 @@ export default function Categories() {
                 className={`shop-now text-xl font-medium ${
                   displayName === "Womans" ? "text-orange-700" : null
                 }`}
-                onClick={() => {
-                  dispatchFilter({ type: Update_Category, payload: [category] });
-                  Navigation("/products");
-                }}
               />
             </div>
           </div>

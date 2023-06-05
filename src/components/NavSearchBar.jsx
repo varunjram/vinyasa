@@ -7,7 +7,7 @@ export default function NavSearchBar() {
   const [query, setQuery] = useState();
   const { products } = useContext(StoreContext);
 
-  console.log("!query: ", query);
+  
   const filterByQuery = (query, products) =>
     products.filter((product) => query !== "" && product.name.includes(query));
   const filteredProducts = filterByQuery(query, products);
