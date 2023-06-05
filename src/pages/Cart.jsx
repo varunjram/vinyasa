@@ -21,10 +21,7 @@ export default function Cart() {
 
   return (
     <>
-      <Toast
-        ref={toast}
-        // position="bottom-right"
-      />
+      <Toast ref={toast} />
       {cart?.length > 0 ? (
         <main>
           <h1 className="text-center  "> My Cart 🛒</h1>

@@ -4,13 +4,11 @@ const fetchProducts = async ({ setProductsLoading, setProductsError, updateProdu
   setProductsLoading(true);
   try {
     const response = await axios("/api/products");
-    console.log("response123: ", response);
+
     if (response?.statusText === "OK") {
       updateProducts(response?.data?.products);
-      console.log("response?.data?.products: ", response?.data?.products);
     }
   } catch (error) {
-    console.error("while fetching products", error);
     setProductsError(error);
   } finally {
     setProductsLoading(false);
@@ -24,7 +22,6 @@ const fetchCategories = async ({ updateCategories, setCategoriesLoading, setCate
       updateCategories(response?.data?.categories);
     }
   } catch (error) {
-    console.error("while fetching Categories ", error);
     setCategoriesError(error);
   } finally {
     setCategoriesLoading(false);
@@ -32,11 +29,10 @@ const fetchCategories = async ({ updateCategories, setCategoriesLoading, setCate
 
   const response = await fetch("/api/categories");
   const data = await response.json();
-  console.log("categories", data);
+
   return data.categories;
 };
 const addProductsToWishlist = async (product, toast, updateWishlist) => {
-  console.log("product: ", product);
   const token = localStorage.getItem("userToken");
   try {
     const response = await axios.post(
@@ -48,9 +44,8 @@ const addProductsToWishlist = async (product, toast, updateWishlist) => {
         },
       }
     );
-    console.log("response: ", response);
+
     if (response.status === 201) {
-      console.log("response: ", response);
       toast.current.show({
         severity: "success",
         summary: "Success",
@@ -60,7 +55,6 @@ const addProductsToWishlist = async (product, toast, updateWishlist) => {
       updateWishlist(response?.data?.wishlist);
     }
   } catch (error) {
-    console.log("error: ", error);
     toast.current.show({
       severity: "error",
       summary: "Error",
@@ -71,16 +65,15 @@ const addProductsToWishlist = async (product, toast, updateWishlist) => {
 };
 const removeProductsFromWishlist = async (id, toast, updateWishlist) => {
   const token = localStorage.getItem("userToken");
-  console.log("token: ", token);
+
   try {
     const response = await axios.delete(`/api/user/wishlist/${id}`, {
       headers: {
         authorization: token,
       },
     });
-    console.log("response-remove: ", response);
+
     if (response.status === 200) {
-      console.log("response: ", response);
       toast.current.show({
         severity: "info",
         summary: "Success",
@@ -90,7 +83,6 @@ const removeProductsFromWishlist = async (id, toast, updateWishlist) => {
       updateWishlist(response?.data?.wishlist);
     }
   } catch (error) {
-    console.log("error: ", error);
     toast.current.show({
       severity: "error",
       summary: "Error",
@@ -100,7 +92,6 @@ const removeProductsFromWishlist = async (id, toast, updateWishlist) => {
   }
 };
 const addProductsToCart = async (product, toast, updateCart) => {
-  console.log("product: ", product);
   const token = localStorage.getItem("userToken");
   try {
     const response = await axios.post(
@@ -112,9 +103,8 @@ const addProductsToCart = async (product, toast, updateCart) => {
         },
       }
     );
-    console.log("response: ", response);
+
     if (response.status === 201) {
-      console.log("response: ", response);
       toast.current.show({
         severity: "success",
         summary: "Success",
@@ -124,7 +114,6 @@ const addProductsToCart = async (product, toast, updateCart) => {
       updateCart(response?.data?.cart);
     }
   } catch (error) {
-    console.log("error: ", error);
     toast.current.show({
       severity: "error",
       summary: "Error",
@@ -151,9 +140,7 @@ const removeCartProduct = async (id, toast = null, updateCart) => {
         life: 1000,
       });
     }
-  } catch (error) {
-    console.log("error delete: ", error);
-  }
+  } catch (error) {}
 };
 
 const updateProductQuantity = async (id, type, toast, updateCart) => {
@@ -175,9 +162,7 @@ const updateProductQuantity = async (id, type, toast, updateCart) => {
     if (response.status === 200) {
       updateCart(response?.data?.cart);
     }
-  } catch (error) {
-    console.log("error: ", error);
-  }
+  } catch (error) {}
 };
 
 export {

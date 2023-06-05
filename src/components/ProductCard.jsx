@@ -1,7 +1,6 @@
 import { Button } from "primereact/button";
-import { Toast } from "primereact/toast";
 import { Tooltip } from "primereact/tooltip";
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { Update_cart, Update_wishlist } from "../reducers/userReducer";
@@ -12,7 +11,6 @@ import {
 } from "../utils/apiCalls";
 
 function ProductCard({ product, toast }) {
-  console.log("toast: ", toast.current);
   const Navigate = useNavigate();
   const Location = useLocation();
   const {

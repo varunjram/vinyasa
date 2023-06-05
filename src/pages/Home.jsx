@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-import { Carousel } from "primereact/carousel";
 import { Button } from "primereact/button";
-import Categories from "../components/Categories";
-import { StoreContext } from "../context/StoreContext";
+import { Carousel } from "primereact/carousel";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import Categories from "../components/Categories";
 import FullPageLoading from "../components/FullPageLoading";
+import { StoreContext } from "../context/StoreContext";
 
 export default function Home() {
   const { isProductsLoading, isCategoriesLoading } = useContext(StoreContext);

@@ -3,6 +3,7 @@ import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import FullPageLoading from "../components/FullPageLoading";
 import { UserContext } from "../context/UserContext";
 import { Update_cart, Update_wishlist } from "../reducers/userReducer";
 import {
@@ -10,7 +11,6 @@ import {
   addProductsToWishlist,
   removeProductsFromWishlist,
 } from "../utils/apiCalls";
-import FullPageLoading from "../components/FullPageLoading";
 
 export default function Product() {
   const toast = useRef(null);
@@ -67,7 +67,6 @@ export default function Product() {
     <>
       <Toast
         ref={toast}
-        // position="bottom-right"
       />
       <h1 className="text-center">Product Page</h1>
       {productLoading ? (

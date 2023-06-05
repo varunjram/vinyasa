@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
-import { InputText } from "primereact/inputtext";
-import { Button } from "primereact/button";
-import { Password } from "primereact/password";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { LOGIN } from "../reducers/userReducer";
-import { useNavigate, useLocation } from "react-router-dom";
 
 const Login = () => {
   const location = useLocation();

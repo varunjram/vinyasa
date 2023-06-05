@@ -2,12 +2,11 @@ import axios from "axios";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
-import React, { useContext, useState, useRef } from "react";
-
+import { Toast } from "primereact/toast";
+import React, { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { LOGIN } from "../reducers/userReducer";
-import { Toast } from "primereact/toast";
 
 const Signup = () => {
   const {
@@ -61,18 +60,13 @@ const Signup = () => {
         userDispatch({ type: LOGIN, payload: { user: data.createdUser, isLoggedIn: true } });
         Navigate(location?.state?.from ?? "/products");
       }
-    } catch (error) {
-      console.error("data.foundUser - error: ", error);
-    }
+    } catch (error) {}
   };
 
   const setFormField = (field, e) => setForm({ ...form, [field]: e.target.value });
   return (
     <>
-      <Toast
-        ref={toast}
-        // position="bottom-right"
-      />
+      <Toast ref={toast} />
       <div className="flex w-full h-screen">
         <div className="flex align-items-center justify-content-center flex-grow-1 ">
           <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">

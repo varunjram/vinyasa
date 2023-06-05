@@ -30,7 +30,7 @@ export default function Profile() {
   const [address, setAddress] = useState(ADDRESS_INPUT_FIELDS);
   const [formVisible, setFormVisible] = useState(false);
 
-  console.log("user: ", user);
+  
   const fetchRandomUser = randomAddressBook[Math.floor(Math.random() * 6)];
   const { name, lastName, fullAddress, city, state, country, phone, email } = addressBook.find(
     (_add) => _add.isDefault
@@ -68,7 +68,7 @@ export default function Profile() {
               ].map(({ prop, key }) => (
                 <p>
                   <strong>{prop} : </strong>
-                  {console.log("key: ", key)}
+                  {}
                   {key === "createdAt" ? moment(user[key]).format("MMMM Do YYYY") : user[key]}
                 </p>
               ))}

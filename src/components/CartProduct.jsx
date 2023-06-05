@@ -13,7 +13,6 @@ function CartProduct({ product, toast }) {
   const { _id, name, price, image_url, strikePrice, off, qty } = product || {};
   const updateCart = (payload) => userDispatch({ type: Update_cart, payload });
   const UpdateWishlist = (payload) => userDispatch({ type: Update_wishlist, payload });
-  console.log("wishList: ", wishlist);
 
   return (
     <>
