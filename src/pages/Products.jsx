@@ -16,7 +16,7 @@ export default function Products() {
   const toast = useRef(null);
 
   const filteredProducts = filterBY({ products, price, category, sortBy, ratings });
-
+  window.scrollTo(0, 0);
   return (
     <main className="product-layout">
       <Toast
