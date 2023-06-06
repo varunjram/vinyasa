@@ -62,3 +62,15 @@
 .single-product__data__middle p {
   margin-top: 0;
 }
+
+@media screen and (width < 426px) {
+  .single-product {
+    flex-direction: column;
+    width: 85%;
+    margin-bottom: 25px;
+  }
+
+  .single-product__img-container {
+    width: auto;
+  }
+}

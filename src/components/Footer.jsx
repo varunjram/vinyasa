@@ -25,7 +25,7 @@ function Footer() {
     },
   ];
   return (
-    <main className="footer p-8 grid col-12">
+    <main className="footer p-8 grid col-12 ml-0">
       <div className=" col-12 lg:col-8">
         <p>Vinayasa</p>
         <p>Find Your Fashion Flow at Vinyasa - Where Every Step is a Statement</p>

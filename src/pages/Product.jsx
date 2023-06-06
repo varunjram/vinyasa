@@ -64,10 +64,8 @@ export default function Product() {
   }, [id]);
 
   return (
-    <>
-      <Toast
-        ref={toast}
-      />
+    <div className="min-h-screen">
+      <Toast ref={toast} />
       <h1 className="text-center">Product Page</h1>
       {productLoading ? (
         <FullPageLoading />
@@ -157,6 +155,6 @@ export default function Product() {
           </main>
         </>
       )}
-    </>
+    </div>
   );
 }
