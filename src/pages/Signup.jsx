@@ -67,9 +67,9 @@ const Signup = () => {
   return (
     <>
       <Toast ref={toast} />
-      <div className="flex w-full h-screen">
+      <div className="flex w-full ">
         <div className="flex align-items-center justify-content-center flex-grow-1 ">
-          <div className="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+          <div className="surface-card p-4 shadow-2 border-round mt-3 mb-8 w-full lg:w-6">
             <div className="text-center mb-5">
               <img
                 src="assets/images/logo/logo-small.jpg"

@@ -11,7 +11,7 @@ export default function WishList() {
   console.log("toast: ", toast.current);
 
   return (
-    <div>
+    <div className="min-h-screen">
       <Toast ref={toast} />
       <h1 className="text-center"> My Wishlist ({wishlist?.length}) </h1>
       <div className="flex flex-wrap gap-5 m-5">

@@ -30,21 +30,18 @@ export default function Profile() {
   const [address, setAddress] = useState(ADDRESS_INPUT_FIELDS);
   const [formVisible, setFormVisible] = useState(false);
 
-  
   const fetchRandomUser = randomAddressBook[Math.floor(Math.random() * 6)];
   const { name, lastName, fullAddress, city, state, country, phone, email } = addressBook.find(
     (_add) => _add.isDefault
   );
 
   return (
-    <>
+    <div className="min-h-screen">
       <Toast
         ref={toast}
         // position="bottom-right"
       />
-      <div
-        className="card"
-        style={{ width: "50%", margin: "auto" }}>
+      <div className="card my-8 lg:w-6 md:w-8 m-auto ">
         <TabView>
           <TabPanel
             header="Profile"
@@ -114,6 +111,6 @@ export default function Profile() {
           </TabPanel>
         </TabView>
       </div>
-    </>
+    </div>
   );
 }

@@ -4,13 +4,21 @@ import Routing from "./components/Routing";
 import "primereact/resources/themes/luna-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "/node_modules/primeflex/primeflex.css";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
-      <Navigation />
-      <Routing />
-    </>
+    <div className="flex flex-column min-h-screen">
+      <div>
+        <Navigation />
+      </div>
+      <div className="flex-grow-1">
+        <Routing />
+      </div>
+      <div className="">
+        <Footer />
+      </div>
+    </div>
   );
 }
 

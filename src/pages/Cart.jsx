@@ -20,7 +20,7 @@ export default function Cart() {
   const orderValue = calculateOrderValue(cart);
 
   return (
-    <>
+    <div className="min-h-screen">
       <Toast ref={toast} />
       {cart?.length > 0 ? (
         <main>
@@ -67,6 +67,6 @@ export default function Cart() {
       ) : (
         <h1 className="text-center">Your 🛒 is empty</h1>
       )}
-    </>
+    </div>
   );
 }
