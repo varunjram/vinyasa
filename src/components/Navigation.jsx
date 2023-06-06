@@ -31,6 +31,13 @@ export default function Navigation() {
   }
   let mobileMenuItems = [
     {
+      label: "Profile",
+      icon: "bi bi-person",
+      command: () => {
+        isLoggedIn ? Navigate("/profile") : Navigate("/login");
+      },
+    },  
+    {
       label: "Home",
       icon: "bi bi-house",
       command: () => {

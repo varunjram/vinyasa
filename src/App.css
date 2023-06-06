@@ -61,6 +61,7 @@
 @import "./styles/components/cartProduct.css";
 @import "./styles/components/navSearchBar.css";
 @import "./styles/components/summaryProductCard.css";
+@import "./styles/components/footer.css";
 @import "./styles/pages/home.css";
 @import "./styles/pages/products.css";
 @import "./styles/pages/cart.css";

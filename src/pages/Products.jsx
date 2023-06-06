@@ -16,8 +16,6 @@ export default function Products() {
   const toast = useRef(null);
 
   const filteredProducts = filterBY({ products, price, category, sortBy, ratings });
-  const screenWidth = window.innerWidth;
-  console.log("screenWidth: ", screenWidth);
 
   return (
     <main className="product-layout">

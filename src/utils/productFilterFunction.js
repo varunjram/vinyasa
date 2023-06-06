@@ -1,5 +1,5 @@
 const filterBY = ({ products, price, category, sortBy, ratings }) => {
-  console.log("price: ", price);
+  
   if (!price && !category.length && !sortBy.value && !ratings.value) return products;
   const priceFilter = products.filter((product) => product.price >= price);
 

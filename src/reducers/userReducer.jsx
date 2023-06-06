@@ -57,7 +57,6 @@ const initialUserState = {
       city: "Toronto",
       fullAddress: "#789 Oak Street",
     },
-    // Add 9 more address entries...
     {
       id: uuid(),
       title: "Home-201c3",
@@ -114,10 +113,8 @@ const userReducer = (state, { type, payload }) => {
     case "DELETE_ADDRESS":
       return { ...state, addressBook: [...state.addressBook.filter((_a) => _a.id !== payload)] };
     case "Update_cart":
-      console.log("state-cart: ", { ...state, cart: payload });
       return { ...state, cart: payload };
     case "Update_wishlist":
-      console.log("state-after: ", { ...state, wishlist: payload });
       return { ...state, wishlist: payload };
     case "ADD_ORDER_SUMMARY":
       return { ...state, orderSummary: payload };

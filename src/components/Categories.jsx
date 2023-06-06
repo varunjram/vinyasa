@@ -1,8 +1,8 @@
+import { Button } from "primereact/button";
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
 import { Update_Category } from "../reducers/productFilterReducer";
-import { Button } from "primereact/button";
 
 export default function Categories() {
   const { categories, dispatchFilter } = useContext(StoreContext);

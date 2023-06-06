@@ -7,15 +7,14 @@ export default function NavSearchBar() {
   const [query, setQuery] = useState();
   const { products } = useContext(StoreContext);
 
-  
   const filterByQuery = (query, products) =>
     products.filter((product) => query !== "" && product.name.includes(query));
   const filteredProducts = filterByQuery(query, products);
   return (
     <div className="nav-center">
-      <BsSearch className="inline" />
+      <BsSearch className="inline " />
       <input
-        className="input"
+        className="input pl-2"
         type="search"
         name=""
         id="search"
@@ -26,7 +25,7 @@ export default function NavSearchBar() {
         }}
       />
       {filteredProducts?.length > 0 && (
-        <ul className="search-result">
+        <ul className="search-result text-primary ">
           {filteredProducts?.map((product) => {
             const { _id, name, image_url } = product || {};
             return (

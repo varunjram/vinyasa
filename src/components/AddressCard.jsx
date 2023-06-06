@@ -1,10 +1,9 @@
 import { Card } from "primereact/card";
 import { Checkbox } from "primereact/checkbox";
-import { DELETE_ADDRESS, UPDATE_DEFAULT_ADDRESS } from "../reducers/userReducer";
 import { UserContext } from "../context/UserContext";
-
-import React, { useContext } from "react";
+import { DELETE_ADDRESS, UPDATE_DEFAULT_ADDRESS } from "../reducers/userReducer";
 import { Button } from "primereact/button";
+import React, { useContext } from "react";
 
 export default function AddressCard({ address, toast, col = 6 }) {
   const { userDispatch } = useContext(UserContext);

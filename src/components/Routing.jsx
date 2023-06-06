@@ -12,7 +12,6 @@ import Product from "../pages/Product";
 import Products from "../pages/Products";
 import Profile from "../pages/Profile";
 import Signup from "../pages/Signup";
-import Test from "../pages/Test";
 import WishList from "../pages/WishList";
 import AuthWrapper from "./AuthWrapper";
 
@@ -63,10 +62,6 @@ export default function Routing() {
         <Route
           path="/order-summary"
           element={<OrderSummary />}
-        />
-        <Route
-          path="/test"
-          element={<Test />}
         />
         <Route
           path="*"

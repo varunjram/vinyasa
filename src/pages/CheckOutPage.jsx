@@ -1,14 +1,14 @@
-import React, { useContext, useRef } from "react";
-import { UserContext } from "../context/UserContext";
-import AddressCard from "../components/AddressCard";
-import { Toast } from "primereact/toast";
-import calculateOrderValue from "../utils/orderValueFunction";
-import { useNavigate } from "react-router-dom";
+import moment from "moment";
 import { Button } from "primereact/button";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
+import { Toast } from "primereact/toast";
+import React, { useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import AddressCard from "../components/AddressCard";
+import { UserContext } from "../context/UserContext";
 import { ADD_ORDER_SUMMARY, Update_cart } from "../reducers/userReducer";
 import { removeCartProduct } from "../utils/apiCalls";
-import moment from "moment";
+import calculateOrderValue from "../utils/orderValueFunction";
 
 const DELIVERY_CHARGES = 499;
 
