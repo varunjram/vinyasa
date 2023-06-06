@@ -102,8 +102,6 @@ export default function Navigation() {
           data-pr-tooltip="Products"
           data-pr-position="bottom">
           <BsShopWindow />
-
-          {wishlist?.length ? <Badge value={wishlist?.length}></Badge> : null}
         </Link>
         <Link
           to="/wishlist"
