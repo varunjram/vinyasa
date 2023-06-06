@@ -18,7 +18,7 @@ export default function Cart() {
   const Navigate = useNavigate();
 
   const orderValue = calculateOrderValue(cart);
-
+  window.scrollTo(0, 0);
   return (
     <div className="min-h-screen">
       <Toast ref={toast} />

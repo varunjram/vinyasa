@@ -34,6 +34,7 @@
 
 .nav-center .search-result a:hover {
   background-color: lightgray;
+  color: var(--cyan-900);
 }
 .nav-center .no-results {
   padding: 0.5rem;

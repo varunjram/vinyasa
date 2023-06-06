@@ -34,7 +34,7 @@ export default function Profile() {
   const { name, lastName, fullAddress, city, state, country, phone, email } = addressBook.find(
     (_add) => _add.isDefault
   );
-
+  window.scrollTo(0, 0);
   return (
     <div className="min-h-screen">
       <Toast

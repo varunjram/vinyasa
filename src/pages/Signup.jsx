@@ -64,6 +64,7 @@ const Signup = () => {
   };
 
   const setFormField = (field, e) => setForm({ ...form, [field]: e.target.value });
+  window.scrollTo(0, 0);
   return (
     <>
       <Toast ref={toast} />

@@ -1,8 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
 
 .nav-container {
-  position: sticky;
-  top: 0;
+ 
   display: flex;
   justify-content: space-between;
   align-items: center;

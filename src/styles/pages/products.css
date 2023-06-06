@@ -16,6 +16,13 @@
 .product-layout--display {
   /* flex-grow: 1; */
   padding: 0.5rem 3rem;
+  margin-bottom: 50px;
+  height: 92vh;
+  overflow: scroll;
+}
+
+.product-layout--display::-webkit-scrollbar {
+  display: none;
 }
 
 .product-layout--display .product-layout--products {
@@ -26,9 +33,10 @@
 
 .mobile--filter--btn .filter--btn {
   position: fixed;
-  top: 90vh;
+  top: 85vh;
   right: 1rem;
   display: none;
+  z-index: 5;
 }
 
 @media screen and (width < 770px) {

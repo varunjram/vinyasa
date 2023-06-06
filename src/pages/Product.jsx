@@ -62,7 +62,7 @@ export default function Product() {
   useEffect(() => {
     fetchProduct(id);
   }, [id]);
-
+  window.scrollTo(0, 0);
   return (
     <div className="min-h-screen">
       <Toast ref={toast} />

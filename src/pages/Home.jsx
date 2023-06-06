@@ -57,7 +57,7 @@ export default function Home() {
       </div>
     );
   };
-
+  window.scrollTo(0, 0);
   return (
     <>
       {isProductsLoading && isCategoriesLoading && <FullPageLoading />}

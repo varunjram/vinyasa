@@ -39,8 +39,9 @@ function Footer() {
           <p>Pages</p>
           {[
             { to: "/", linkName: "Home" },
-            { to: "/cart", linkName: "Cart" },
+            { to: "/products", linkName: "Products" },
             { to: "/wishlist", linkName: "Wishlist" },
+            { to: "/cart", linkName: "Cart" },
           ]?.map((link) => (
             <p>
               <Link

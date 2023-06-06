@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function NotFound() {
   const [showDiv, setShowDiv] = useState(false);
@@ -12,7 +12,7 @@ export default function NotFound() {
       clearTimeout(timeoutId);
     };
   }, []);
-
+  window.scrollTo(0, 0);
   return (
     <>
       <h1
@@ -20,11 +20,11 @@ export default function NotFound() {
           color: "red",
           opacity: showDiv ? 1 : 0,
           transition: showDiv ? "opacity 2s ease-in-out" : "none",
-          textAlign:"center"
+          textAlign: "center",
         }}>
         404: Page Not Found
       </h1>
-      <div >
+      <div>
         <img
           src="https://cdn.dribbble.com/users/285475/screenshots/2083086/media/bbcfd1a1fecd97c1835792283a601f10.gif"
           width="60%"

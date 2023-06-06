@@ -58,6 +58,7 @@ export default function CheckOutPage() {
       reject: paymentRejected,
     });
   };
+  window.scrollTo(0, 0);
   return (
     <>
       <Toast

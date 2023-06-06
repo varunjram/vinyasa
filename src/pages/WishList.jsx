@@ -9,7 +9,7 @@ export default function WishList() {
   } = useContext(UserContext);
   const toast = useRef(null);
   console.log("toast: ", toast.current);
-
+  window.scrollTo(0, 0);
   return (
     <div className="min-h-screen">
       <Toast ref={toast} />

@@ -43,6 +43,7 @@ const Login = () => {
   };
 
   const setFormField = (field, e) => setForm({ ...form, [field]: e.target.value });
+  window.scrollTo(0, 0);
   return (
     <div className="flex w-full min-h-screen align-items-center justify-content-center">
       <div className="surface-card p-4 shadow-2 border-round w-full md:w-6">

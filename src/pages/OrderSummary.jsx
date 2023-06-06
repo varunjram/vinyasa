@@ -13,7 +13,7 @@ export default function OrderSummary() {
   } = useUser();
 
   const { pathname } = useLocation();
-
+  window.scrollTo(0, 0);
   return (
     <>
       {orderNumber ? (
