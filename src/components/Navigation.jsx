@@ -3,7 +3,7 @@ import { Button } from "primereact/button";
 import { Menu } from "primereact/menu";
 import { Tooltip } from "primereact/tooltip";
 import React, { useContext, useRef } from "react";
-import { BsBookmarkHeart, BsFilePerson } from "react-icons/bs";
+import { BsShopWindow, BsBookmarkHeart, BsPersonCircle } from "react-icons/bs";
 import { FaOpencart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
@@ -36,12 +36,19 @@ export default function Navigation() {
       command: () => {
         isLoggedIn ? Navigate("/profile") : Navigate("/login");
       },
-    },  
+    },
     {
       label: "Home",
       icon: "bi bi-house",
       command: () => {
         Navigate("/");
+      },
+    },
+    {
+      label: "Products",
+      icon: "bi bi-shop-window",
+      command: () => {
+        Navigate("/products");
       },
     },
     {
@@ -90,6 +97,15 @@ export default function Navigation() {
       <NavSearchBar />
       <nav className="nav-right pr-5 hidden md:flex lg:flex">
         <Link
+          to="/products"
+          className="p-overlay-badge wishlist cursor-pointer"
+          data-pr-tooltip="Products"
+          data-pr-position="bottom">
+          <BsShopWindow />
+
+          {wishlist?.length ? <Badge value={wishlist?.length}></Badge> : null}
+        </Link>
+        <Link
           to="/wishlist"
           className="p-overlay-badge wishlist cursor-pointer"
           data-pr-tooltip="Wishlist"
@@ -111,7 +127,7 @@ export default function Navigation() {
             className="cart cursor-pointer"
             data-pr-tooltip="Profile"
             data-pr-position="bottom">
-            <BsFilePerson />
+            <BsPersonCircle />
           </Link>
         )}
 
