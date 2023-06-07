@@ -46,7 +46,7 @@ $ npm start
 - Checkout
 - Order Summary
 
-#### Demo - https://www.loom.com/share/bfe5a810c4f743f4952b6583cea46528
+<!-- #### Demo -  -->
 
 ### Login :
 
