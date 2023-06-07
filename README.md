@@ -44,5 +44,42 @@ $ npm start
 - Logout
 - Address Management
 - Checkout
+- Order Summary
 
-## Demo -
+#### Demo - https://www.loom.com/share/bfe5a810c4f743f4952b6583cea46528
+
+### Login :
+
+![Login Page](/public/assets/images/login.png)
+
+### Sign Up :
+
+![SignUp Page](/public/assets/images/signUp.png)
+
+### Home :
+
+![Home Page](/public/assets/images/Home.png)
+
+### Products :
+
+![Products Page](/public/assets/images/Products.png)
+
+### Product :
+
+![Product Page](/public/assets/images/product.png)
+
+### Wishlist :
+
+![Wishlist Page](/public/assets/images/wishlist.png)
+
+### Cart :
+
+![Cart Page](/public/assets/images/cart.png)
+
+### Checkout :
+
+![Checkout Page](/public/assets/images/checkout.png)
+
+### Order summary :
+
+![Checkout Page](/public/assets/images/orderSummary.png)
