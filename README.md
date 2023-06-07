@@ -54,7 +54,7 @@ $ npm start
 
 ### Sign Up :
 
-![SignUp Page](/public/assets/images/signUp.png)
+![SignUp Page](/public/assets/images/signup.png)
 
 ### Home :
 
